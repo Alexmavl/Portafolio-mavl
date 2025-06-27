@@ -64,7 +64,7 @@ const About: FC = () => {
 
             <h4 className="text-lg font-semibold text-indigo-700">Educación</h4>
             <p className="text-gray-700 mb-4">
-              🎓 Actualmente cursando tercer año de Ingeniería en Sistemas en la Universidad Mariano Gálvez.<br />
+              🎓 Actualmente cursando Cuarto año de Ingeniería en Sistemas en la Universidad Mariano Gálvez.<br />
               📚 Perito Contador con orientación en Computación – Colegio Miguel Ángel Asturias (2010–2012).
             </p>
 
