@@ -6,17 +6,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
 
-  darkMode: 'class',
+  
   theme: {
     extend: {
-      colors:
-      {
-        'dark-bg': '#0f0f1b',
-        'accent': '#8b5cf6',
-        'highlight': '#facc15',
-
-      },
-
+      
 
        fontFamily: {
         inter: ['Inter', 'sans-serif'],
