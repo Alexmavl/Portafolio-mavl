@@ -41,13 +41,6 @@
   color: #ffffff;
 }
 
-body {
- background: linear-gradient(-45deg, #000000, #3da840, #3187d2, #4c15ab);
-  background-size: 400% 400%;
-  animation: backgroundShift 20s ease infinite;
-  color: rgb(17, 16, 16);
-}
-
 @keyframes backgroundShift {
   0% {
     background-position: 0% 50%;
@@ -58,5 +51,12 @@ body {
   100% {
     background-position: 0% 50%;
   }
+}
+
+body {
+  background: linear-gradient(-45deg, #0b0b0b, #112f1e, #0e1b2c, #5f27cd);
+  background-size: 400% 400%;
+  animation: backgroundShift 20s ease infinite;
+  color: #ffffff;
 }
 

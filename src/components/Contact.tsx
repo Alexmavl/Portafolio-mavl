@@ -3,6 +3,26 @@ import type { FC } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa";
 
+
+// Animaciones base
+const containerVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      staggerChildren: 0.15, // ✅ se mantiene sin problema
+    },
+  },
+};
+
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const Contact: FC = () => {
   const [formData, setFormData] = useState({ nombre: "", email: "", mensaje: "" });
 
@@ -17,20 +37,32 @@ const Contact: FC = () => {
   };
 
   return (
-    <section id="contacto" className="py-20">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="bg-white/10 backdrop-blur-md rounded-xl shadow-lg p-10">
-          <h2 className="text-3xl font-bold text-center text-white mb-10">Contacto</h2>
+    <section id="contacto" className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      <motion.div
+        className="max-w-4xl mx-auto px-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
+        <motion.div
+          className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-indigo-500/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-10"
+          variants={itemVariants}
+        >
+          <motion.h2
+            className="text-3xl font-bold text-center text-indigo-300 mb-10"
+            variants={itemVariants}
+          >
+            Contacto
+          </motion.h2>
 
           <motion.form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
             className="grid gap-6"
+            variants={containerVariants}
           >
-            <label className="flex flex-col">
+            {/* Campo: Nombre */}
+            <motion.label className="flex flex-col" variants={itemVariants}>
               <span className="mb-1 font-medium text-white">Nombre:</span>
               <input
                 type="text"
@@ -38,12 +70,13 @@ const Contact: FC = () => {
                 value={formData.nombre}
                 onChange={handleChange}
                 required
-                className="bg-white/10 border border-white/20 text-white placeholder-white/60 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                className="bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
                 placeholder="Tu nombre"
               />
-            </label>
+            </motion.label>
 
-            <label className="flex flex-col">
+            {/* Campo: Email */}
+            <motion.label className="flex flex-col" variants={itemVariants}>
               <span className="mb-1 font-medium text-white">Correo Electrónico:</span>
               <input
                 type="email"
@@ -51,12 +84,13 @@ const Contact: FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="bg-white/10 border border-white/20 text-white placeholder-white/60 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                className="bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
                 placeholder="correo@ejemplo.com"
               />
-            </label>
+            </motion.label>
 
-            <label className="flex flex-col">
+            {/* Campo: Mensaje */}
+            <motion.label className="flex flex-col" variants={itemVariants}>
               <span className="mb-1 font-medium text-white">Mensaje:</span>
               <textarea
                 name="mensaje"
@@ -64,33 +98,70 @@ const Contact: FC = () => {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="bg-white/10 border border-white/20 text-white placeholder-white/60 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                className="bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
                 placeholder="Escribe tu mensaje aquí..."
               />
-            </label>
+            </motion.label>
 
-            <button
+            {/* Botón */}
+            <motion.button
               type="submit"
-              className="bg-indigo-500 text-white font-semibold py-2 px-6 rounded hover:bg-indigo-400 transition"
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: "#6366f1",
+                boxShadow: "0 0 12px #6366f1",
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="bg-indigo-500 text-white font-semibold py-2 px-6 rounded-xl hover:bg-indigo-400 transition"
+              variants={itemVariants}
             >
-              Enviar
-            </button>
+              Enviar Mensaje
+            </motion.button>
           </motion.form>
 
-          <p className="text-center text-white/80 mt-10">También puedes contactarme por redes sociales:</p>
-          <div className="mt-4 flex justify-center gap-6 text-2xl text-white">
-            <a href="https://www.linkedin.com/in/marvin-vasquez-27557397/" target="_blank">
-              <FaLinkedin className="hover:text-indigo-300 transition" />
-            </a>
-            <a href="https://www.facebook.com/alexito.vasquez1/" target="_blank">
-              <FaFacebook className="hover:text-blue-400 transition" />
-            </a>
-            <a href="https://github.com/Alexmavl" target="_blank">
-              <FaGithub className="hover:text-gray-400 transition" />
-            </a>
-          </div>
-        </div>
-      </div>
+          {/* REDES SOCIALES */}
+          <motion.div
+            className="mt-12 border-t border-white/20 pt-6 text-center"
+            variants={itemVariants}
+          >
+            <p className="text-white/80 mb-4">
+              También puedes contactarme por redes sociales:
+            </p>
+            <motion.div
+              className="flex justify-center gap-6 text-3xl"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <motion.a
+                href="https://www.linkedin.com/in/marvin-vasquez-27557397/"
+                target="_blank"
+                whileHover={{ scale: 1.2, color: "#818cf8" }}
+                className="text-indigo-400"
+              >
+                <FaLinkedin />
+              </motion.a>
+              <motion.a
+                href="https://www.facebook.com/alexito.vasquez1/"
+                target="_blank"
+                whileHover={{ scale: 1.2, color: "#60a5fa" }}
+                className="text-blue-400"
+              >
+                <FaFacebook />
+              </motion.a>
+              <motion.a
+                href="https://github.com/Alexmavl"
+                target="_blank"
+                whileHover={{ scale: 1.2, color: "#e5e7eb" }}
+                className="text-gray-300"
+              >
+                <FaGithub />
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

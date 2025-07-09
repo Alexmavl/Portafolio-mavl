@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 const Header: FC = () => {
   const navItems = [
@@ -11,7 +12,8 @@ const Header: FC = () => {
   ];
 
   const handleDownloadCV = () => {
-    window.open("/cv.pdf", "_blank");
+    window.open("/CVMarvinVasquez.pdf", "_blank");
+
   };
 
   return (
@@ -21,23 +23,28 @@ const Header: FC = () => {
         <ul className="flex gap-6 text-lg font-medium">
           {navItems.map((item) => (
             <li key={item.href}>
-              <a
-                href={item.href}
-                className="hover:text-cyan-300 transition-colors duration-200"
+              <Link
+                to={item.href.replace("#", "")}
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass="text-cyan-400"
+                className="cursor-pointer hover:text-cyan-300 transition-colors duration-200"
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        {/* Botón estilizado en tonos oscuros con borde y animación */}
+        {/* Botón estilizado con animación */}
         <motion.button
           onClick={handleDownloadCV}
           whileHover={{
             scale: 1.05,
-            backgroundColor: "#1f2937", // gris oscuro (Tailwind slate-800)
-            borderColor: "#22d3ee",      // cyan-400
+            backgroundColor: "#1f2937",
+            borderColor: "#22d3ee",
             color: "#22d3ee",
             boxShadow: "0 0 12px 2px #22d3ee",
           }}
