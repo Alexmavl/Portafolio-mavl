@@ -13,14 +13,13 @@ const Header: FC = () => {
 
   const handleDownloadCV = () => {
     window.open("/CVMarvinVasquez.pdf", "_blank");
-
   };
 
   return (
     <header className="bg-black/40 backdrop-blur-md text-white shadow-md fixed top-0 inset-x-0 z-50">
-      <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
         {/* Navegación */}
-        <ul className="flex gap-6 text-lg font-medium">
+        <ul className="flex flex-wrap justify-center md:justify-start gap-4 text-lg font-medium">
           {navItems.map((item) => (
             <li key={item.href}>
               <Link
