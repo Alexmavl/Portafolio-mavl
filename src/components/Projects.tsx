@@ -67,7 +67,7 @@ const Projects: FC = () => {
                     className="w-full h-48 object-cover rounded-t-2xl"
                   />
                   {/* Glow overlay en hover */}
-                  <div className="absolute inset-0 rounded-t-2xl bg-indigo-400/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-t-2xl bg-cyan-400/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
                 </motion.div>
 
                 <div className="p-6">

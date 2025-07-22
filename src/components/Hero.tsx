@@ -64,7 +64,7 @@ const Hero: FC = () => {
                 href="https://www.linkedin.com/in/marvin-vasquez-27557397/"
                 target="_blank"
                 whileHover={{ scale: 1.2, color: "#818cf8" }}
-                className="text-indigo-400 transition"
+                className="text-cyan-400 transition"
               >
                 <FaLinkedin />
               </motion.a>
@@ -95,7 +95,7 @@ const Hero: FC = () => {
             transition={{ duration: 0.9 }}
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 0 40px rgba(99, 102, 331, 0.6)",
+              boxShadow: "0 0 40px rgba(0, 128, 128, 0.6)",
             }}
           >
             <img
