@@ -12,7 +12,7 @@ const containerVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      staggerChildren: 0.15, // ✅ se mantiene sin problema
+      staggerChildren: 0.15, 
     },
   },
 };
@@ -46,11 +46,11 @@ const Contact: FC = () => {
         variants={containerVariants}
       >
         <motion.div
-          className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-indigo-500/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-10"
+          className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-500/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-10"
           variants={itemVariants}
         >
           <motion.h2
-            className="text-3xl font-bold text-center text-indigo-300 mb-10"
+            className="text-3xl font-bold text-center text-cyan-300 mb-10"
             variants={itemVariants}
           >
             Contacto
@@ -98,7 +98,7 @@ const Contact: FC = () => {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+                className="bg-white/10 border border-white/20 text-white placeholder-white/60 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
                 placeholder="Escribe tu mensaje aquí..."
               />
             </motion.label>
@@ -113,7 +113,7 @@ const Contact: FC = () => {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="bg-indigo-500 text-white font-semibold py-2 px-6 rounded-xl hover:bg-indigo-400 transition"
+              className="bg-cyan-300 text-white font-semibold py-2 px-6 rounded-xl  bg-cyan-300:bg-cyan-600 transition"
               variants={itemVariants}
             >
               Enviar Mensaje
@@ -138,7 +138,7 @@ const Contact: FC = () => {
                 href="https://www.linkedin.com/in/marvin-vasquez-27557397/"
                 target="_blank"
                 whileHover={{ scale: 1.2, color: "#818cf8" }}
-                className="text-indigo-400"
+                className="text-cyan-400"
               >
                 <FaLinkedin />
               </motion.a>

@@ -31,14 +31,14 @@ const Projects: FC = () => {
     <section id="proyectos" className="py-20 bg-gradient-to-b from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
-          className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-indigo-500/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-10"
+          className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-300/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
         >
           <motion.h2
-            className="text-3xl font-bold text-center text-indigo-300 mb-10"
+            className="text-3xl font-bold text-center text-cyan-300 mb-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -71,7 +71,7 @@ const Projects: FC = () => {
                 </motion.div>
 
                 <div className="p-6">
-                  <div className="flex items-center gap-3 text-indigo-300 text-2xl mb-2">
+                  <div className="flex items-center gap-3 text-cyan-300 text-2xl mb-2">
                     {proyecto.icono}
                     <h3 className="text-lg font-semibold text-white">{proyecto.titulo}</h3>
                   </div>
