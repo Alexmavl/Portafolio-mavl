@@ -32,12 +32,12 @@ const Projects: FC = () => {
       <div className="max-w-7xl mx-auto px-4">
          <motion.div
     className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-300/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-10"
-    initial={{ opacity: 0, y: 30 }}           // 👈 animación de entrada
-    whileInView={{ opacity: 1, y: 0 }}        // 👈 visible con desplazamiento
-    viewport={{ once: false, amount: 0.3 }}   // 👈 permite reanimación al entrar en viewport
-    transition={{ duration: 0.6, staggerChildren: 0.2 }} // 👈 animación suave + hijos
+    initial={{ opacity: 0, y: 30 }}          
+    whileInView={{ opacity: 1, y: 0 }}       
+    viewport={{ once: false, amount: 0.3 }} 
+    transition={{ duration: 0.6, staggerChildren: 0.2 }} 
   >
-          {/* TÍTULO PRINCIPAL */}
+          
           <motion.h2
             className="text-3xl font-bold text-center text-cyan-300 mb-10 shimmer-text"
             initial={{ opacity: 0, y: -20 }}
@@ -48,7 +48,7 @@ const Projects: FC = () => {
             Proyectos
           </motion.h2>
 
-          {/* TARJETAS DE PROYECTO */}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
             {proyectos.map((proyecto, index) => (
               <motion.div
@@ -59,7 +59,7 @@ const Projects: FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                {/* IMAGEN */}
+              
                 <motion.div
                   className="relative group"
                   whileHover={{ scale: 1.03 }}

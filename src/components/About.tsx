@@ -97,12 +97,12 @@ const About: FC = () => {
                     </div>
                     <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden">
                        <motion.div
-          className="h-3 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-400"
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill.level}%` }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false }} // 👈 permite reanimación al hacer scroll de nuevo
-        />
+                          className="h-3 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-400"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1 }}
+                          viewport={{ once: false }} // 👈 permite reanimación al hacer scroll de nuevo
+                        />
                     </div>
                   </motion.div>
                 ))}

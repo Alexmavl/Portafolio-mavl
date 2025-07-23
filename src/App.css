@@ -350,13 +350,13 @@ body::after {
   animation-delay: -3s;
 }
 
-/* Asegurar que el contenido esté por encima */
+
 #root {
   position: relative;
   z-index: 2;
 }
 
-/* Estilos de Hero.css movidos aquí */
+
 @keyframes spaceFloat {
   0%,
   100% {

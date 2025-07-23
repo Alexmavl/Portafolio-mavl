@@ -43,7 +43,6 @@ const Header: FC = () => {
     >
       <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
 
-        {/* Logotipo animado MV */}
         <motion.div
           className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center font-bold text-sm md:text-base rounded-full 
                      bg-gradient-to-tr from-cyan-400/30 to-indigo-500/20 ring-2 ring-cyan-400 text-white 
@@ -55,7 +54,6 @@ const Header: FC = () => {
           MV
         </motion.div>
 
-        {/* Navegación */}
         <ul className="flex flex-wrap justify-center md:justify-start gap-4 text-lg font-medium">
           {navItems.map((item) => (
             <li key={item.href}>
@@ -73,8 +71,6 @@ const Header: FC = () => {
             </li>
           ))}
         </ul>
-
-        {/* Botón de descarga */}
         <motion.button
           onClick={handleDownloadCV}
           aria-label="Descargar currículum en PDF"

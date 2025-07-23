@@ -1,13 +1,13 @@
 import type { FC } from "react";
 import { FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import { cardVariants, staggerContainer } from "../motionVariants"; // Asegúrate que la ruta sea correcta
+import { cardVariants, staggerContainer } from "../motionVariants"; 
 
 const Hero: FC = () => {
   return (
     <section
       id="inicio"
-      className="min-h-screen py-20 bg-transparent flex items-center" // Asegura altura completa y centra verticalmente
+      className="min-h-screen py-20 bg-transparent flex items-center" 
     >
       <div className="max-w-7xl mx-auto px-4 w-full">
         <AnimatePresence>
@@ -46,7 +46,6 @@ const Hero: FC = () => {
                 📍 Guazacapán, Santa Rosa, Guatemala
               </motion.p>
 
-              {/* REDES */}
               <motion.div
                 className="mt-5 flex gap-5 justify-center md:justify-start text-2xl"
                 variants={cardVariants}
@@ -79,8 +78,6 @@ const Hero: FC = () => {
                 </motion.a>
               </motion.div>
             </motion.div>
-
-            {/* IMAGEN DE PERFIL */}
             <motion.div
               className="flex-1 flex justify-center profile-aura"
               variants={cardVariants}

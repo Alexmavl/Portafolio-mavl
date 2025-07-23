@@ -12,7 +12,7 @@ interface AppProps {}
 const App: React.FC<AppProps> = () => {
   return (
     <>
-      {/* Efectos visuales espaciales */}
+ 
       <div className="space-meteors"></div>
       <div className="meteor-extra"></div>
       <div className="star-particles"></div>
@@ -28,7 +28,7 @@ const App: React.FC<AppProps> = () => {
           damping: 10,
           duration: 0.8,
         }}
-        className="pt-28 md:pt-24 relative z-20" // <- espacio suficiente para el header fijo
+        className="pt-28 md:pt-24 relative z-20" 
       >
         <Header />
         <Hero />
