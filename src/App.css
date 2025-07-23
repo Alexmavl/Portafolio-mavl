@@ -1,10 +1,40 @@
+/* ROOT CONTAINER RESPONSIVO */
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* Padding responsivo optimizado */
+  padding: 0.5rem;
+  text-align: left; /* Mejor para móvil */
+  position: relative;
+  z-index: 2;
 }
 
+/* Responsive padding para diferentes dispositivos */
+@media (min-width: 640px) {
+  #root {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #root {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #root {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  #root {
+    padding: 2rem;
+  }
+}
+
+/* ANIMACIONES OPTIMIZADAS */
 @keyframes backgroundShift {
   0% {
     background-position: 0% 50%;
@@ -18,8 +48,7 @@
 }
 
 @keyframes twinkle {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -41,20 +70,17 @@
     opacity: 0.8;
   }
   100% {
-    transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px))
-      rotate(45deg);
+    transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg);
     opacity: 0;
   }
 }
 
 @keyframes meteorGlow {
-  0%,
-  100% {
+  0%, 100% {
     box-shadow: 0 0 6px #67e8f9, 0 0 12px #67e8f9;
   }
   50% {
-    box-shadow: 0 0 20px #67e8f9, 0 0 40px #67e8f9,
-      0 0 60px rgba(103, 232, 249, 0.5);
+    box-shadow: 0 0 20px #67e8f9, 0 0 40px #67e8f9, 0 0 60px rgba(103, 232, 249, 0.5);
   }
 }
 
@@ -73,20 +99,19 @@
   }
 }
 
+/* BODY CON EFECTOS OPTIMIZADOS */
 body {
   background: linear-gradient(-45deg, #0b0b0b, #01223d, #000925, #011764);
   background-size: 400% 400%;
   animation: backgroundShift 20s ease infinite;
   color: #ffffff;
   position: relative;
-  body {
   overflow-x: hidden;
- 
+  margin: 0;
+  padding: 0;
 }
 
-}
-
-/* Estrellas de fondo */
+/* ESTRELLAS OPTIMIZADAS PARA MÓVIL */
 body::before {
   content: '';
   position: fixed;
@@ -97,125 +122,39 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background-image:
-    /* Estrellas grandes */ radial-gradient(
-      circle at 20% 15%,
-      #ffffff 0%,
-      #ffffff 1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 80% 25%,
-      #67e8f9 0%,
-      #67e8f9 1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 15% 70%,
-      #ffffff 0%,
-      #ffffff 1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      #67e8f9 0%,
-      #67e8f9 1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 60% 10%,
-      #ffffff 0%,
-      #ffffff 1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 30% 90%,
-      #67e8f9 0%,
-      #67e8f9 1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 75% 60%,
-      #ffffff 0%,
-      #ffffff 1px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 10% 40%,
-      #67e8f9 0%,
-      #67e8f9 1px,
-      transparent 2px
-    ),
-    /* Estrellas medianas */ radial-gradient(
-      circle at 45% 30%,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.8) 0.5px,
-      transparent 1px
-    ),
-    radial-gradient(
-      circle at 70% 45%,
-      rgba(103, 232, 249, 0.8) 0%,
-      rgba(103, 232, 249, 0.8) 0.5px,
-      transparent 1px
-    ),
-    radial-gradient(
-      circle at 25% 55%,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.8) 0.5px,
-      transparent 1px
-    ),
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(103, 232, 249, 0.8) 0%,
-      rgba(103, 232, 249, 0.8) 0.5px,
-      transparent 1px
-    ),
-    /* Estrellas pequeñas */ radial-gradient(
-      circle at 35% 75%,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(255, 255, 255, 0.6) 0.3px,
-      transparent 0.5px
-    ),
-    radial-gradient(
-      circle at 55% 85%,
-      rgba(103, 232, 249, 0.6) 0%,
-      rgba(103, 232, 249, 0.6) 0.3px,
-      transparent 0.5px
-    ),
-    radial-gradient(
-      circle at 95% 45%,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(255, 255, 255, 0.6) 0.3px,
-      transparent 0.5px
-    ),
-    radial-gradient(
-      circle at 5% 75%,
-      rgba(103, 232, 249, 0.6) 0%,
-      rgba(103, 232, 249, 0.6) 0.3px,
-      transparent 0.5px
-    );
-
-  background-size:
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%;
-
+    /* Estrellas principales - menos en móvil */
+    radial-gradient(circle at 20% 15%, #ffffff 0%, #ffffff 1px, transparent 2px),
+    radial-gradient(circle at 80% 25%, #67e8f9 0%, #67e8f9 1px, transparent 2px),
+    radial-gradient(circle at 15% 70%, #ffffff 0%, #ffffff 1px, transparent 2px),
+    radial-gradient(circle at 90% 80%, #67e8f9 0%, #67e8f9 1px, transparent 2px);
+  
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
   animation: twinkle 3s ease-in-out infinite alternate;
 }
 
-/* Nebulosa de fondo */
+/* Estrellas adicionales solo en pantallas grandes */
+@media (min-width: 768px) {
+  body::before {
+    background-image:
+      radial-gradient(circle at 20% 15%, #ffffff 0%, #ffffff 1px, transparent 2px),
+      radial-gradient(circle at 80% 25%, #67e8f9 0%, #67e8f9 1px, transparent 2px),
+      radial-gradient(circle at 15% 70%, #ffffff 0%, #ffffff 1px, transparent 2px),
+      radial-gradient(circle at 90% 80%, #67e8f9 0%, #67e8f9 1px, transparent 2px),
+      radial-gradient(circle at 60% 10%, #ffffff 0%, #ffffff 1px, transparent 2px),
+      radial-gradient(circle at 30% 90%, #67e8f9 0%, #67e8f9 1px, transparent 2px),
+      radial-gradient(circle at 75% 60%, #ffffff 0%, #ffffff 1px, transparent 2px),
+      radial-gradient(circle at 10% 40%, #67e8f9 0%, #67e8f9 1px, transparent 2px),
+      /* Estrellas medianas */
+      radial-gradient(circle at 45% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 0.5px, transparent 1px),
+      radial-gradient(circle at 70% 45%, rgba(103, 232, 249, 0.8) 0%, rgba(103, 232, 249, 0.8) 0.5px, transparent 1px),
+      radial-gradient(circle at 25% 55%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 0.5px, transparent 1px),
+      radial-gradient(circle at 85% 20%, rgba(103, 232, 249, 0.8) 0%, rgba(103, 232, 249, 0.8) 0.5px, transparent 1px);
+    
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  }
+}
+
+/* NEBULOSA DE FONDO OPTIMIZADA */
 body::after {
   content: '';
   position: fixed;
@@ -226,96 +165,79 @@ body::after {
   pointer-events: none;
   z-index: 0;
   background-image:
-    /* Nebulosas difusas */ radial-gradient(
-      ellipse 300px 150px at 20% 30%,
-      rgba(103, 232, 249, 0.05) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 400px 200px at 80% 70%,
-      rgba(95, 39, 205, 0.08) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 250px 100px at 60% 20%,
-      rgba(103, 232, 249, 0.03) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 350px 180px at 15% 80%,
-      rgba(17, 47, 30, 0.1) 0%,
-      transparent 70%
-    );
-
+    /* Nebulosas simplificadas para móvil */
+    radial-gradient(ellipse 200px 100px at 20% 30%, rgba(103, 232, 249, 0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 250px 120px at 80% 70%, rgba(95, 39, 205, 0.05) 0%, transparent 70%);
   animation: nebula 15s ease-in-out infinite;
 }
 
-/* Meteoritos */
-.space-meteors {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
+/* Nebulosas adicionales para pantallas grandes */
+@media (min-width: 768px) {
+  body::after {
+    background-image:
+      radial-gradient(ellipse 300px 150px at 20% 30%, rgba(103, 232, 249, 0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 200px at 80% 70%, rgba(95, 39, 205, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 250px 100px at 60% 20%, rgba(103, 232, 249, 0.03) 0%, transparent 70%),
+      radial-gradient(ellipse 350px 180px at 15% 80%, rgba(17, 47, 30, 0.1) 0%, transparent 70%);
+  }
 }
 
-.space-meteors::before,
-.space-meteors::after {
-  content: '';
-  position: absolute;
-  width: 4px;
-  height: 40px;
-  background: linear-gradient(
-    135deg,
-    #67e8f9 0%,
-    rgba(103, 232, 249, 0.8) 30%,
-    rgba(103, 232, 249, 0.4) 60%,
-    transparent 100%
-  );
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  animation: meteorFall 8s linear infinite, meteorGlow 2s ease-in-out infinite alternate;
+/* METEORITOS - DESHABILITADOS EN MÓVIL PARA PERFORMANCE */
+@media (min-width: 768px) {
+  .space-meteors {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .space-meteors::before,
+  .space-meteors::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(135deg, #67e8f9 0%, rgba(103, 232, 249, 0.8) 30%, rgba(103, 232, 249, 0.4) 60%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: meteorFall 8s linear infinite, meteorGlow 2s ease-in-out infinite alternate;
+  }
+
+  .space-meteors::before {
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s, 0s;
+    transform: rotate(45deg);
+  }
+
+  .space-meteors::after {
+    top: -50px;
+    left: -50px;
+    animation-delay: -4s, -1s;
+    transform: rotate(45deg);
+    width: 3px;
+    height: 30px;
+  }
+
+  .meteor-extra {
+    position: fixed;
+    top: -50px;
+    left: -50px;
+    width: 2px;
+    height: 25px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(103, 232, 249, 0.7) 40%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: meteorFall 12s linear infinite;
+    animation-delay: -6s;
+    transform: rotate(45deg);
+  }
 }
 
-.space-meteors::before {
-  top: -50px;
-  left: -50px;
-  animation-delay: 0s, 0s;
-  transform: rotate(45deg);
-}
-
-.space-meteors::after {
-  top: -50px;
-  left: -50px;
-  animation-delay: -4s, -1s;
-  transform: rotate(45deg);
-  width: 3px;
-  height: 30px;
-}
-
-/* Meteorito adicional */
-.meteor-extra {
-  position: fixed;
-  top: -50px;
-  left: -50px;
-  width: 2px;
-  height: 25px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(103, 232, 249, 0.7) 40%,
-    transparent 100%
-  );
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  animation: meteorFall 12s linear infinite;
-  animation-delay: -6s;
-  transform: rotate(45deg);
-}
-
-/* Partículas estelares */
+/* PARTÍCULAS ESTELARES SIMPLIFICADAS */
 .star-particles {
   position: fixed;
   top: 0;
@@ -326,40 +248,35 @@ body::after {
   z-index: 0;
 }
 
-.star-particles::before,
-.star-particles::after {
-  content: '';
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: #67e8f9;
-  border-radius: 50%;
-  animation: twinkle 4s ease-in-out infinite;
-  box-shadow: 0 0 6px #67e8f9;
+@media (min-width: 768px) {
+  .star-particles::before,
+  .star-particles::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: #67e8f9;
+    border-radius: 50%;
+    animation: twinkle 4s ease-in-out infinite;
+    box-shadow: 0 0 6px #67e8f9;
+  }
+
+  .star-particles::before {
+    top: 35%;
+    left: 25%;
+    animation-delay: -1s;
+  }
+
+  .star-particles::after {
+    top: 65%;
+    left: 75%;
+    animation-delay: -3s;
+  }
 }
 
-.star-particles::before {
-  top: 35%;
-  left: 25%;
-  animation-delay: -1s;
-}
-
-.star-particles::after {
-  top: 65%;
-  left: 75%;
-  animation-delay: -3s;
-}
-
-
-#root {
-  position: relative;
-  z-index: 2;
-}
-
-
+/* ANIMACIONES ESPACIALES OPTIMIZADAS */
 @keyframes spaceFloat {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
   50% {
@@ -368,14 +285,11 @@ body::after {
 }
 
 @keyframes cosmicPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(103, 232, 249, 0.4),
-      0 0 40px rgba(103, 232, 249, 0.2), 0 0 60px rgba(95, 39, 205, 0.1);
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(103, 232, 249, 0.4), 0 0 40px rgba(103, 232, 249, 0.2), 0 0 60px rgba(95, 39, 205, 0.1);
   }
   50% {
-    box-shadow: 0 0 30px rgba(103, 232, 249, 0.6),
-      0 0 60px rgba(103, 232, 249, 0.4), 0 0 100px rgba(95, 39, 205, 0.3);
+    box-shadow: 0 0 30px rgba(103, 232, 249, 0.6), 0 0 60px rgba(103, 232, 249, 0.4), 0 0 100px rgba(95, 39, 205, 0.3);
   }
 }
 
@@ -397,77 +311,73 @@ body::after {
   }
 }
 
+/* ESTILOS DE COMPONENTES */
 .space-glassmorphism {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(103, 232, 249, 0.05) 25%,
-    rgba(95, 39, 205, 0.05) 50%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(103, 232, 249, 0.05) 25%, rgba(95, 39, 205, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%);
   border: 1px solid rgba(103, 232, 249, 0.3);
-  box-shadow: 0 8px 32px rgba(103, 232, 249, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(103, 232, 249, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .cosmic-border {
   position: relative;
   border: 3px solid transparent;
   background: linear-gradient(45deg, #67e8f9, #5f27cd, #67e8f9) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: subtract;
   mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   mask-composite: subtract;
 }
 
+/* ANIMACIONES DE PERFIL - REDUCIDAS EN MÓVIL */
 .profile-aura {
-  animation: spaceFloat 3s ease-in-out infinite,
-    cosmicPulse 2s ease-in-out infinite;
+  animation: spaceFloat 3s ease-in-out infinite;
 }
 
-.orbit-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 240px;
-  height: 240px;
-  pointer-events: none;
+@media (min-width: 768px) {
+  .profile-aura {
+    animation: spaceFloat 3s ease-in-out infinite, cosmicPulse 2s ease-in-out infinite;
+  }
 }
 
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #67e8f9;
-  border-radius: 50%;
-  box-shadow: 0 0 6px #67e8f9;
+/* PARTÍCULAS ORBITALES - SOLO DESKTOP */
+@media (min-width: 768px) {
+  .orbit-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #67e8f9;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #67e8f9;
+  }
+
+  .particle:nth-child(1) {
+    animation: orbitParticles 8s linear infinite;
+  }
+
+  .particle:nth-child(2) {
+    animation: orbitParticles 12s linear infinite reverse;
+    animation-delay: -4s;
+  }
+
+  .particle:nth-child(3) {
+    animation: orbitParticles 10s linear infinite;
+    animation-delay: -2s;
+  }
 }
 
-.particle:nth-child(1) {
-  animation: orbitParticles 8s linear infinite;
-}
-
-.particle:nth-child(2) {
-  animation: orbitParticles 12s linear infinite reverse;
-  animation-delay: -4s;
-}
-
-.particle:nth-child(3) {
-  animation: orbitParticles 10s linear infinite;
-  animation-delay: -2s;
-}
-
+/* TEXTO SHIMMER */
 .shimmer-text {
-  background: linear-gradient(
-    90deg,
-    #ffffff 0%,
-    #67e8f9 25%,
-    #ffffff 50%,
-    #67e8f9 75%,
-    #ffffff 100%
-  );
+  background: linear-gradient(90deg, #ffffff 0%, #67e8f9 25%, #ffffff 50%, #67e8f9 75%, #ffffff 100%);
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
@@ -475,6 +385,7 @@ body::after {
   animation: shimmer 3s ease-in-out infinite;
 }
 
+/* ICONOS SOCIALES */
 .social-icon-space {
   position: relative;
   overflow: hidden;
@@ -496,19 +407,63 @@ body::after {
   transform: scale(1);
 }
 
-
+/* OPTIMIZACIÓN DE IMÁGENES */
 img {
   position: relative !important;
   z-index: 9999 !important;
   display: block !important;
   opacity: 1 !important;
+  max-width: 100%;
+  height: auto;
 }
 
+/* SCROLL OPTIMIZADO */
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  /* Removido scroll-snap para mejor compatibilidad móvil */
 }
 
-section {
-  scroll-snap-align: start;
+/* SCROLL SNAP SOLO EN DESKTOP */
+@media (min-width: 1024px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+  
+  section {
+    scroll-snap-align: start;
+  }
+}
+
+/* OPTIMIZACIONES PARA PERFORMANCE EN MÓVIL */
+@media (max-width: 767px) {
+  /* Reducir animaciones en móvil */
+  * {
+    animation-duration: 0.3s !important;
+    animation-delay: 0s !important;
+  }
+  
+  /* Simplificar sombras */
+  .space-glassmorphism {
+    box-shadow: 0 4px 16px rgba(103, 232, 249, 0.1);
+  }
+  
+  /* Reducir blur effects */
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* OPTIMIZACIÓN PARA PANTALLAS PEQUEÑAS */
+@media (max-width: 480px) {
+  #root {
+    padding: 0.25rem;
+  }
+}
+
+/* ACCESIBILIDAD - REDUCIR ANIMACIONES SI EL USUARIO LO PREFIERE */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
