@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { FC } from "react";
 import { FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -15,8 +16,31 @@ const Header: FC = () => {
     window.open("/CVMarvinVasquez.pdf", "_blank", "noopener,noreferrer");
   };
 
+  // Estado para detectar la dirección del scroll
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY && currentY > 100) {
+        setShowHeader(false); // scrolleando hacia abajo
+      } else {
+        setShowHeader(true); // scrolleando hacia arriba
+      }
+      setLastScrollY(currentY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="bg-black/40 backdrop-blur-md text-white shadow-md fixed top-0 inset-x-0 z-50">
+    <motion.header
+      className="bg-black/40 backdrop-blur-md text-white shadow-md fixed top-0 inset-x-0 z-50 transition-transform duration-500"
+      animate={{ y: showHeader ? 0 : -100 }}
+      transition={{ type: "tween" }}
+    >
       <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
 
         {/* Logotipo animado MV */}
@@ -69,7 +93,7 @@ const Header: FC = () => {
           <span>Descargar CV</span>
         </motion.button>
       </nav>
-    </header>
+    </motion.header>
   );
 };
 

@@ -12,10 +12,12 @@ interface AppProps {}
 const App: React.FC<AppProps> = () => {
   return (
     <>
+      {/* Efectos visuales espaciales */}
       <div className="space-meteors"></div>
       <div className="meteor-extra"></div>
       <div className="star-particles"></div>
 
+      {/* Contenedor principal animado */}
       <motion.div
         id="root"
         initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
@@ -26,7 +28,7 @@ const App: React.FC<AppProps> = () => {
           damping: 10,
           duration: 0.8,
         }}
-        className="pt-20 relative z-20"
+        className="pt-28 md:pt-24 relative z-20" // <- espacio suficiente para el header fijo
       >
         <Header />
         <Hero />
@@ -34,7 +36,7 @@ const App: React.FC<AppProps> = () => {
         <Projects />
         <Contact />
 
-       
+        {/* Footer */}
         <motion.footer
           className="text-center text-white/60 text-sm py-6"
           initial={{ opacity: 0 }}

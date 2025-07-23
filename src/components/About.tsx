@@ -83,7 +83,7 @@ const About: FC = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                   >
                     <div className="flex items-center gap-3 font-semibold text-white">
                       <motion.span
@@ -96,13 +96,13 @@ const About: FC = () => {
                       {skill.label}
                     </div>
                     <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden">
-                      <motion.div
-                        className="h-3 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-400"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        viewport={{ once: true }}
-                      />
+                       <motion.div
+          className="h-3 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-400"
+          initial={{ width: 0 }}
+          whileInView={{ width: `${skill.level}%` }}
+          transition={{ duration: 1 }}
+          viewport={{ once: false }} // 👈 permite reanimación al hacer scroll de nuevo
+        />
                     </div>
                   </motion.div>
                 ))}
