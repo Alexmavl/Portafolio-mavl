@@ -22,7 +22,7 @@ const Hero: FC = () => {
     <section id="inicio" className="py-20 bg-gradient-to-b from-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
-          className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-indigo-500/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-10 flex flex-col md:flex-row items-center justify-between gap-10"
+          className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-500/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-10 flex flex-col md:flex-row items-center justify-between gap-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -46,7 +46,7 @@ const Hero: FC = () => {
               y experiencia como subgerente, auxiliar de Recursos Humanos y vendedor en el área de construcción.
             </motion.p>
             <motion.p
-              className="text-lg font-medium text-indigo-300 mb-1"
+              className="text-lg font-medium text-cyan-300 mb-1"
               variants={textVariants}
               transition={{ duration: 0.6 }}
             >
@@ -101,7 +101,7 @@ const Hero: FC = () => {
             <img
               src="/ImagenesPortafolio/FotoPerfil2.jpg"
               alt="Marvin Alexander Vásquez López"
-              className="w-80 h-80 object-cover rounded-full border-4 border-indigo-700 shadow-xl transition-transform duration-300"
+              className="w-80 h-80 object-cover rounded-full border-4 border-cyan-300 shadow-xl transition-transform duration-300"
             />
           </motion.div>
         </motion.div>

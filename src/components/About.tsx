@@ -23,47 +23,23 @@ const skills = [
 
 const About: FC = () => {
   return (
-    <section id="sobre-mi" className="py-20 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-500/30 shadow-[0_0_40px_5px_rgba(56,189,248,0.2)] p-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ staggerChildren: 0.3 }}
-          variants={{
-            hidden: {},
-            visible: {},
-          }}
-        >
-          <motion.h2
-            className="text-3xl font-bold text-center text-cyan-300 mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+    <motion.section
+      id="sobre-mi"
+      className="min-h-screen flex items-center py-20 px-4 bg-gradient-to-b from-black to-gray-900"
+      initial={{ opacity: 0, rotateX: -90, transformOrigin: "top center" }}
+      whileInView={{ opacity: 1, rotateX: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.5 }}
+    >
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-500/30 shadow-[0_0_40px_5px_rgba(56,189,248,0.2)] p-10">
+          <h2 className="text-3xl font-bold text-center text-cyan-300 mb-10">
             Sobre Mí
-          </motion.h2>
+          </h2>
 
-          <motion.div
-            className="grid md:grid-cols-2 gap-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ staggerChildren: 0.2 }}
-            variants={{
-              hidden: {},
-              visible: {},
-            }}
-          >
+          <div className="grid md:grid-cols-2 gap-10">
             {/* HABILIDADES */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6 }}
-            >
+            <div>
               <h3 className="text-xl font-semibold text-white mb-4">
                 Habilidades Técnicas
               </h3>
@@ -102,16 +78,10 @@ const About: FC = () => {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* EXPERIENCIA */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6 }}
-            >
+            <div>
               <h3 className="text-xl font-semibold text-white mb-4">
                 Formación y Experiencia
               </h3>
@@ -146,11 +116,11 @@ const About: FC = () => {
                   Asesoría en construcción y gestión de créditos.
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
