@@ -12,12 +12,25 @@ const Header: FC = () => {
   ];
 
   const handleDownloadCV = () => {
-    window.open("/CVMarvinVasquez.pdf", "_blank");
+    window.open("/CVMarvinVasquez.pdf", "_blank", "noopener,noreferrer");
   };
 
   return (
     <header className="bg-black/40 backdrop-blur-md text-white shadow-md fixed top-0 inset-x-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+
+        {/* Logotipo animado MV */}
+        <motion.div
+          className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center font-bold text-sm md:text-base rounded-full 
+                     bg-gradient-to-tr from-cyan-400/30 to-indigo-500/20 ring-2 ring-cyan-400 text-white 
+                     shadow-[0_0_25px_rgba(34,211,238,0.3)] hover:shadow-cyan-500/30 transition-shadow duration-300 select-none"
+          initial={{ y: 0 }}
+          animate={{ y: [0, -3, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          MV
+        </motion.div>
+
         {/* Navegación */}
         <ul className="flex flex-wrap justify-center md:justify-start gap-4 text-lg font-medium">
           {navItems.map((item) => (
@@ -37,9 +50,10 @@ const Header: FC = () => {
           ))}
         </ul>
 
-        {/* Botón estilizado con animación */}
+        {/* Botón de descarga */}
         <motion.button
           onClick={handleDownloadCV}
+          aria-label="Descargar currículum en PDF"
           whileHover={{
             scale: 1.05,
             backgroundColor: "#1f2937",

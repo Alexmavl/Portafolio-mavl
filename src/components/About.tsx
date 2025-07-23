@@ -25,29 +25,56 @@ const About: FC = () => {
   return (
     <motion.section
       id="sobre-mi"
-      className="min-h-screen flex items-center py-20 px-4 bg-gradient-to-b from-black to-gray-900"
-      initial={{ opacity: 0, rotateX: -90, transformOrigin: "top center" }}
-      whileInView={{ opacity: 1, rotateX: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.5 }}
+      className="min-h-screen flex items-center py-20 px-4 bg-transparent"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.3 }}
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-500/30 shadow-[0_0_40px_5px_rgba(56,189,248,0.2)] p-10">
-          <h2 className="text-3xl font-bold text-center text-cyan-300 mb-10">
+
+          {/* TÍTULO PRINCIPAL */}
+          <motion.h2
+            className="text-3xl font-bold text-center text-cyan-300 mb-10 shimmer-text"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             Sobre Mí
-          </h2>
+          </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-10">
-            {/* HABILIDADES */}
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-4">
+            {/* HABILIDADES TÉCNICAS */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <motion.h3
+                className="text-xl font-semibold text-white mb-4"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
                 Habilidades Técnicas
-              </h3>
-              <p className="text-white/80 mb-6">
+              </motion.h3>
+
+              <motion.p
+                className="text-white/80 mb-6"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
                 Soy autodidacta, curioso y enfocado en aprender continuamente.
                 Aprovecho mis fortalezas para mejorar cada día y reconozco mis
                 debilidades para superarlas.
-              </p>
+              </motion.p>
+
               <div className="space-y-6">
                 {skills.map((skill, index) => (
                   <motion.div
@@ -56,6 +83,7 @@ const About: FC = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
+                    viewport={{ once: true }}
                   >
                     <div className="flex items-center gap-3 font-semibold text-white">
                       <motion.span
@@ -73,28 +101,67 @@ const About: FC = () => {
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         transition={{ duration: 1, delay: 0.2 }}
+                        viewport={{ once: true }}
                       />
                     </div>
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            {/* EXPERIENCIA */}
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-4">
+            {/* FORMACIÓN Y EXPERIENCIA */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <motion.h3
+                className="text-xl font-semibold text-white mb-4"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
                 Formación y Experiencia
-              </h3>
+              </motion.h3>
 
-              <h4 className="text-lg font-semibold text-cyan-300">Educación</h4>
-              <p className="text-white/80 mb-4">
-                🎓 Cuarto año de Ingeniería en Sistemas – Universidad Mariano Gálvez.
-                <br />
+              <motion.h4
+                className="text-lg font-semibold text-cyan-300"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Educación
+              </motion.h4>
+              <motion.p
+                className="text-white/80 mb-4"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                🎓 Cuarto año de Ingeniería en Sistemas – Universidad Mariano Gálvez.<br />
                 📚 Perito Contador en Computación – Colegio Miguel Ángel Asturias (2010–2012).
-              </p>
+              </motion.p>
 
-              <h4 className="text-lg font-semibold text-cyan-300">Experiencia Laboral</h4>
-              <div className="text-white/80 space-y-3">
+              <motion.h4
+                className="text-lg font-semibold text-cyan-300"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Experiencia Laboral
+              </motion.h4>
+              <motion.div
+                className="text-white/80 space-y-3"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
                 <div>
                   <strong className="text-white">Desarrollador — INGUAT</strong>
                   <br />
@@ -115,8 +182,8 @@ const About: FC = () => {
                   <br />
                   Asesoría en construcción y gestión de créditos.
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>

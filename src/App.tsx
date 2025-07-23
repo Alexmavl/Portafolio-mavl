@@ -5,32 +5,19 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-
-
 import './App.css';
 
-/**
- * @typedef {Object} AppProps
-
- */
 interface AppProps {}
 
-/**
-
- * @param {AppProps} props 
- * @returns {JSX.Element} 
- */
 const App: React.FC<AppProps> = () => {
   return (
     <>
-     
       <div className="space-meteors"></div>
       <div className="meteor-extra"></div>
       <div className="star-particles"></div>
 
-     
       <motion.div
-        id="root" 
+        id="root"
         initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{
@@ -41,12 +28,21 @@ const App: React.FC<AppProps> = () => {
         }}
         className="pt-20 relative z-20"
       >
-       
         <Header />
         <Hero />
         <About />
-        <Projects/>
-        <Contact/>
+        <Projects />
+        <Contact />
+
+       
+        <motion.footer
+          className="text-center text-white/60 text-sm py-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          © {new Date().getFullYear()} Marvin Alexander Vásquez López. Todos los derechos reservados.
+        </motion.footer>
       </motion.div>
     </>
   );
