@@ -2,9 +2,8 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  /* Padding responsivo optimizado */
   padding: 0.5rem;
-  text-align: left; /* Mejor para móvil */
+  text-align: left;
   position: relative;
   z-index: 2;
 }
@@ -34,7 +33,7 @@
   }
 }
 
-/* ANIMACIONES OPTIMIZADAS */
+/* ANIMACIONES OPTIMIZADAS - SOLO DESKTOP */
 @keyframes backgroundShift {
   0% {
     background-position: 0% 50%;
@@ -49,12 +48,12 @@
 
 @keyframes twinkle {
   0%, 100% {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: scale(1);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.2);
+    opacity: 0.8;
+    transform: scale(1.1);
   }
 }
 
@@ -75,23 +74,14 @@
   }
 }
 
-@keyframes meteorGlow {
-  0%, 100% {
-    box-shadow: 0 0 6px #67e8f9, 0 0 12px #67e8f9;
-  }
-  50% {
-    box-shadow: 0 0 20px #67e8f9, 0 0 40px #67e8f9, 0 0 60px rgba(103, 232, 249, 0.5);
-  }
-}
-
 @keyframes nebula {
   0% {
     transform: translateX(0) translateY(0);
     opacity: 0.1;
   }
   50% {
-    transform: translateX(20px) translateY(-10px);
-    opacity: 0.2;
+    transform: translateX(15px) translateY(-8px);
+    opacity: 0.15;
   }
   100% {
     transform: translateX(0) translateY(0);
@@ -103,15 +93,33 @@
 body {
   background: linear-gradient(-45deg, #0b0b0b, #01223d, #000925, #011764);
   background-size: 400% 400%;
-  animation: backgroundShift 20s ease infinite;
   color: #ffffff;
   position: relative;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ESTRELLAS OPTIMIZADAS PARA MÓVIL */
+/* BACKGROUND ANIMATION SOLO EN DESKTOP */
+@media (min-width: 768px) {
+  body {
+    animation: backgroundShift 25s ease infinite;
+  }
+}
+
+/* BACKGROUND ESTÁTICO EN MÓVIL */
+@media (max-width: 767px) {
+  body {
+    background: linear-gradient(-45deg, #0b0b0b, #01223d, #000925, #011764);
+    background-size: 100% 100%;
+    background-position: center;
+    background-attachment: fixed;
+  }
+}
+
+/* ESTRELLAS SIMPLIFICADAS PARA MÓVIL */
 body::before {
   content: '';
   position: fixed;
@@ -122,17 +130,16 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background-image:
-    /* Estrellas principales - menos en móvil */
     radial-gradient(circle at 20% 15%, #ffffff 0%, #ffffff 1px, transparent 2px),
     radial-gradient(circle at 80% 25%, #67e8f9 0%, #67e8f9 1px, transparent 2px),
     radial-gradient(circle at 15% 70%, #ffffff 0%, #ffffff 1px, transparent 2px),
     radial-gradient(circle at 90% 80%, #67e8f9 0%, #67e8f9 1px, transparent 2px);
-  
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-  animation: twinkle 3s ease-in-out infinite alternate;
+  background-repeat: no-repeat;
+  opacity: 0.8;
 }
 
-/* Estrellas adicionales solo en pantallas grandes */
+/* ANIMACIÓN DE ESTRELLAS SOLO EN DESKTOP */
 @media (min-width: 768px) {
   body::before {
     background-image:
@@ -144,17 +151,15 @@ body::before {
       radial-gradient(circle at 30% 90%, #67e8f9 0%, #67e8f9 1px, transparent 2px),
       radial-gradient(circle at 75% 60%, #ffffff 0%, #ffffff 1px, transparent 2px),
       radial-gradient(circle at 10% 40%, #67e8f9 0%, #67e8f9 1px, transparent 2px),
-      /* Estrellas medianas */
       radial-gradient(circle at 45% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 0.5px, transparent 1px),
-      radial-gradient(circle at 70% 45%, rgba(103, 232, 249, 0.8) 0%, rgba(103, 232, 249, 0.8) 0.5px, transparent 1px),
-      radial-gradient(circle at 25% 55%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 0.5px, transparent 1px),
-      radial-gradient(circle at 85% 20%, rgba(103, 232, 249, 0.8) 0%, rgba(103, 232, 249, 0.8) 0.5px, transparent 1px);
+      radial-gradient(circle at 70% 45%, rgba(103, 232, 249, 0.8) 0%, rgba(103, 232, 249, 0.8) 0.5px, transparent 1px);
     
-    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    animation: twinkle 4s ease-in-out infinite alternate;
   }
 }
 
-/* NEBULOSA DE FONDO OPTIMIZADA */
+/* NEBULOSA ESTÁTICA EN MÓVIL */
 body::after {
   content: '';
   position: fixed;
@@ -165,13 +170,13 @@ body::after {
   pointer-events: none;
   z-index: 0;
   background-image:
-    /* Nebulosas simplificadas para móvil */
-    radial-gradient(ellipse 200px 100px at 20% 30%, rgba(103, 232, 249, 0.03) 0%, transparent 70%),
-    radial-gradient(ellipse 250px 120px at 80% 70%, rgba(95, 39, 205, 0.05) 0%, transparent 70%);
-  animation: nebula 15s ease-in-out infinite;
+    radial-gradient(ellipse 150px 80px at 20% 30%, rgba(103, 232, 249, 0.02) 0%, transparent 70%),
+    radial-gradient(ellipse 200px 100px at 80% 70%, rgba(95, 39, 205, 0.03) 0%, transparent 70%);
+  background-repeat: no-repeat;
+  opacity: 0.6;
 }
 
-/* Nebulosas adicionales para pantallas grandes */
+/* NEBULOSA ANIMADA SOLO EN DESKTOP */
 @media (min-width: 768px) {
   body::after {
     background-image:
@@ -179,10 +184,12 @@ body::after {
       radial-gradient(ellipse 400px 200px at 80% 70%, rgba(95, 39, 205, 0.08) 0%, transparent 70%),
       radial-gradient(ellipse 250px 100px at 60% 20%, rgba(103, 232, 249, 0.03) 0%, transparent 70%),
       radial-gradient(ellipse 350px 180px at 15% 80%, rgba(17, 47, 30, 0.1) 0%, transparent 70%);
+    animation: nebula 18s ease-in-out infinite;
+    opacity: 1;
   }
 }
 
-/* METEORITOS - DESHABILITADOS EN MÓVIL PARA PERFORMANCE */
+/* METEORITOS - SOLO DESKTOP */
 @media (min-width: 768px) {
   .space-meteors {
     position: fixed;
@@ -202,53 +209,37 @@ body::after {
     height: 40px;
     background: linear-gradient(135deg, #67e8f9 0%, rgba(103, 232, 249, 0.8) 30%, rgba(103, 232, 249, 0.4) 60%, transparent 100%);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: meteorFall 8s linear infinite, meteorGlow 2s ease-in-out infinite alternate;
+    animation: meteorFall 10s linear infinite;
   }
 
   .space-meteors::before {
     top: -50px;
     left: -50px;
-    animation-delay: 0s, 0s;
     transform: rotate(45deg);
   }
 
   .space-meteors::after {
     top: -50px;
     left: -50px;
-    animation-delay: -4s, -1s;
+    animation-delay: -5s;
     transform: rotate(45deg);
     width: 3px;
     height: 30px;
   }
-
-  .meteor-extra {
-    position: fixed;
-    top: -50px;
-    left: -50px;
-    width: 2px;
-    height: 25px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(103, 232, 249, 0.7) 40%, transparent 100%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    animation: meteorFall 12s linear infinite;
-    animation-delay: -6s;
-    transform: rotate(45deg);
-  }
 }
 
-/* PARTÍCULAS ESTELARES SIMPLIFICADAS */
-.star-particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
+/* PARTÍCULAS ESTELARES - SOLO DESKTOP */
 @media (min-width: 768px) {
+  .star-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .star-particles::before,
   .star-particles::after {
     content: '';
@@ -257,8 +248,8 @@ body::after {
     height: 1px;
     background: #67e8f9;
     border-radius: 50%;
-    animation: twinkle 4s ease-in-out infinite;
-    box-shadow: 0 0 6px #67e8f9;
+    animation: twinkle 5s ease-in-out infinite;
+    box-shadow: 0 0 4px #67e8f9;
   }
 
   .star-particles::before {
@@ -280,16 +271,16 @@ body::after {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
 
 @keyframes cosmicPulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(103, 232, 249, 0.4), 0 0 40px rgba(103, 232, 249, 0.2), 0 0 60px rgba(95, 39, 205, 0.1);
+    box-shadow: 0 0 15px rgba(103, 232, 249, 0.3), 0 0 30px rgba(103, 232, 249, 0.15);
   }
   50% {
-    box-shadow: 0 0 30px rgba(103, 232, 249, 0.6), 0 0 60px rgba(103, 232, 249, 0.4), 0 0 100px rgba(95, 39, 205, 0.3);
+    box-shadow: 0 0 25px rgba(103, 232, 249, 0.5), 0 0 50px rgba(103, 232, 249, 0.3);
   }
 }
 
@@ -311,31 +302,53 @@ body::after {
   }
 }
 
-/* ESTILOS DE COMPONENTES */
+/* ESTILOS DE COMPONENTES OPTIMIZADOS */
 .space-glassmorphism {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(103, 232, 249, 0.05) 25%, rgba(95, 39, 205, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%);
-  border: 1px solid rgba(103, 232, 249, 0.3);
-  box-shadow: 0 8px 32px rgba(103, 232, 249, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(103, 232, 249, 0.04) 25%, rgba(95, 39, 205, 0.04) 50%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1px solid rgba(103, 232, 249, 0.2);
+  box-shadow: 0 4px 16px rgba(103, 232, 249, 0.1);
+}
+
+/* GLASSMORPHISM MEJORADO PARA DESKTOP */
+@media (min-width: 768px) {
+  .space-glassmorphism {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(103, 232, 249, 0.05) 25%, rgba(95, 39, 205, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%);
+    border: 1px solid rgba(103, 232, 249, 0.3);
+    box-shadow: 0 8px 32px rgba(103, 232, 249, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
 }
 
 .cosmic-border {
   position: relative;
-  border: 3px solid transparent;
-  background: linear-gradient(45deg, #67e8f9, #5f27cd, #67e8f9) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: subtract;
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  mask-composite: subtract;
+  border: 2px solid rgba(103, 232, 249, 0.4);
+  border-radius: 8px;
 }
 
-/* ANIMACIONES DE PERFIL - REDUCIDAS EN MÓVIL */
+/* COSMIC BORDER MEJORADO PARA DESKTOP */
+@media (min-width: 768px) {
+  .cosmic-border {
+    border: 3px solid transparent;
+    background: linear-gradient(45deg, #67e8f9, #5f27cd, #67e8f9) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: subtract;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: subtract;
+  }
+}
+
+/* ANIMACIONES DE PERFIL SIMPLIFICADAS EN MÓVIL */
 .profile-aura {
-  animation: spaceFloat 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
 }
 
+.profile-aura:hover {
+  transform: translateY(-2px);
+}
+
+/* ANIMACIONES COMPLETAS SOLO EN DESKTOP */
 @media (min-width: 768px) {
   .profile-aura {
-    animation: spaceFloat 3s ease-in-out infinite, cosmicPulse 2s ease-in-out infinite;
+    animation: spaceFloat 4s ease-in-out infinite, cosmicPulse 3s ease-in-out infinite;
   }
 }
 
@@ -353,58 +366,74 @@ body::after {
 
   .particle {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
     background: #67e8f9;
     border-radius: 50%;
-    box-shadow: 0 0 6px #67e8f9;
+    box-shadow: 0 0 4px #67e8f9;
   }
 
   .particle:nth-child(1) {
-    animation: orbitParticles 8s linear infinite;
+    animation: orbitParticles 10s linear infinite;
   }
 
   .particle:nth-child(2) {
-    animation: orbitParticles 12s linear infinite reverse;
-    animation-delay: -4s;
+    animation: orbitParticles 15s linear infinite reverse;
+    animation-delay: -5s;
   }
 
   .particle:nth-child(3) {
-    animation: orbitParticles 10s linear infinite;
-    animation-delay: -2s;
+    animation: orbitParticles 12s linear infinite;
+    animation-delay: -3s;
   }
 }
 
-/* TEXTO SHIMMER */
+/* TEXTO SHIMMER SIMPLIFICADO EN MÓVIL */
 .shimmer-text {
-  background: linear-gradient(90deg, #ffffff 0%, #67e8f9 25%, #ffffff 50%, #67e8f9 75%, #ffffff 100%);
-  background-size: 200% auto;
+  background: linear-gradient(90deg, #ffffff 0%, #67e8f9 50%, #ffffff 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 3s ease-in-out infinite;
 }
 
-/* ICONOS SOCIALES */
+/* SHIMMER ANIMADO SOLO EN DESKTOP */
+@media (min-width: 768px) {
+  .shimmer-text {
+    background: linear-gradient(90deg, #ffffff 0%, #67e8f9 25%, #ffffff 50%, #67e8f9 75%, #ffffff 100%);
+    background-size: 200% auto;
+    animation: shimmer 4s ease-in-out infinite;
+  }
+}
+
+/* ICONOS SOCIALES OPTIMIZADOS */
 .social-icon-space {
   position: relative;
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.social-icon-space::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(103, 232, 249, 0.2) 0%, transparent 70%);
-  transform: scale(0);
-  transition: transform 0.3s ease;
+.social-icon-space:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(103, 232, 249, 0.3);
 }
 
-.social-icon-space:hover::before {
-  transform: scale(1);
+/* EFECTOS AVANZADOS SOLO EN DESKTOP */
+@media (min-width: 768px) {
+  .social-icon-space::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(103, 232, 249, 0.2) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+  }
+
+  .social-icon-space:hover::before {
+    transform: scale(1);
+  }
 }
 
 /* OPTIMIZACIÓN DE IMÁGENES */
@@ -415,12 +444,14 @@ img {
   opacity: 1 !important;
   max-width: 100%;
   height: auto;
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 /* SCROLL OPTIMIZADO */
 html {
   scroll-behavior: smooth;
-  /* Removido scroll-snap para mejor compatibilidad móvil */
 }
 
 /* SCROLL SNAP SOLO EN DESKTOP */
@@ -434,48 +465,75 @@ html {
   }
 }
 
-/* OPTIMIZACIONES PARA PERFORMANCE EN MÓVIL */
+/* OPTIMIZACIONES CRÍTICAS PARA MÓVIL */
 @media (max-width: 767px) {
-  /* Reducir animaciones en móvil */
-  * {
-    animation-duration: 0.3s !important;
-    animation-delay: 0s !important;
+  /* Forzar GPU acceleration solo donde es necesario */
+  .space-glassmorphism,
+  .profile-aura,
+  .social-icon-space {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
   
-  /* Simplificar sombras */
-  .space-glassmorphism {
-    box-shadow: 0 4px 16px rgba(103, 232, 249, 0.1);
-  }
-  
-  /* Reducir blur effects */
+  /* Desactivar blur effects pesados */
   .backdrop-blur-md {
-    backdrop-filter: blur(8px);
+    backdrop-filter: none;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Reducir complejidad de gradientes */
+  .space-glassmorphism {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(103, 232, 249, 0.15);
   }
 }
 
-/* OPTIMIZACIÓN PARA PANTALLAS PEQUEÑAS */
+/* OPTIMIZACIÓN PARA PANTALLAS MUY PEQUEÑAS */
 @media (max-width: 480px) {
   #root {
     padding: 0.25rem;
   }
+  
+  /* Simplificar aún más el fondo */
+  body::before {
+    opacity: 0.4;
+    background-image:
+      radial-gradient(circle at 25% 25%, #ffffff 0%, #ffffff 1px, transparent 2px),
+      radial-gradient(circle at 75% 75%, #67e8f9 0%, #67e8f9 1px, transparent 2px);
+    background-size: 100% 100%, 100% 100%;
+  }
+  
+  body::after {
+    opacity: 0.3;
+    background-image:
+      radial-gradient(ellipse 100px 60px at 50% 50%, rgba(103, 232, 249, 0.02) 0%, transparent 70%);
+  }
 }
 
-/* ACCESIBILIDAD - REDUCIR ANIMACIONES SI EL USUARIO LO PREFIERE */
+/* ACCESIBILIDAD - RESPETAR PREFERENCIAS DEL USUARIO */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
-    transition: none !important;
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+  }
+  
+  body {
+    background-position: center !important;
   }
 }
 
-@media (max-width: 767px) {
-  body {
-    animation: none !important;
-    background-position: center !important;
+/* OPTIMIZACIÓN PARA DISPOSITIVOS DE BAJA POTENCIA */
+@media (max-device-width: 768px) and (orientation: portrait) {
+  /* Forzar renderizado optimizado */
+  * {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
   }
-
+  
+  /* Optimizar compositing layers */
   body::before,
   body::after {
-    animation: none !important;
+    will-change: auto;
   }
 }
