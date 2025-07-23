@@ -19,7 +19,7 @@ const itemVariants = {
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const }
+    transition: { duration: 0.9, ease: "easeOut" as const }
   },
 };
 
@@ -88,12 +88,13 @@ const Hero: FC = () => {
                   </motion.span>
                   
                   <motion.h1
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight shimmer-text"
-                    variants={itemVariants}
-                  >
-                    Marvin Alexander 
-                    <span className="block text-cyan-300">Vásquez López</span>
-                  </motion.h1>
+  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
+  variants={itemVariants}
+>
+  Marvin Alexander 
+  <span className="block text-white">Vásquez López</span>
+</motion.h1>
+
                 </motion.div>
 
                 {/* ROL ACTUAL */}

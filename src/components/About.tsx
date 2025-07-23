@@ -35,15 +35,16 @@ const About: FC = () => {
         <div className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-500/30 shadow-[0_0_40px_5px_rgba(56,189,248,0.2)] p-6 sm:p-8 md:p-10">
 
           {/* TÍTULO PRINCIPAL */}
-          <motion.h2
-            className="text-2xl sm:text-3xl font-bold text-center text-cyan-300 mb-6 sm:mb-8 md:mb-10 shimmer-text"
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Sobre Mí
-          </motion.h2>
+         <motion.h2
+  className="text-2xl sm:text-3xl font-bold text-center text-cyan-300 mb-6 sm:mb-8 md:mb-10"
+  initial={{ opacity: 0, y: -30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+>
+  Sobre Mí
+</motion.h2>
+
 
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
             {/* HABILIDADES TÉCNICAS */}
