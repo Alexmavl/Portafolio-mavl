@@ -7,17 +7,18 @@ import { motion } from "framer-motion";
 
 function App() {
   return (
- <motion.div
-      initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-      animate={{ opacity: 1, scale: 1, rotate: 0 }}
-      transition={{
-        type: "spring",
-        stiffness: 150,
-        damping: 10,
-        duration: 0.8,
-      }}
-      className="pt-20"
-    >
+<motion.div
+  initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+  transition={{
+    type: "spring" as const, // Esto fuerza el tipo correcto
+    stiffness: 150,
+    damping: 10,
+    duration: 0.8,
+  }}
+  className="pt-20"
+>
+
 
 
       <Header />
