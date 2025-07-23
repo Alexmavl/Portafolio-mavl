@@ -467,3 +467,15 @@ html {
     transition: none !important;
   }
 }
+
+@media (max-width: 767px) {
+  body {
+    animation: none !important;
+    background-position: center !important;
+  }
+
+  body::before,
+  body::after {
+    animation: none !important;
+  }
+}
