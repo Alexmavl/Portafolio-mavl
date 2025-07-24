@@ -7,19 +7,19 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import './App.css';
 
-interface AppProps {}
-
-const App: React.FC<AppProps> = () => {
+const App: React.FC = () => {
   return (
     <>
- 
+      {/* Efectos visuales */}
       <div className="space-meteors"></div>
       <div className="meteor-extra"></div>
       <div className="star-particles"></div>
 
-      {/* Contenedor principal animado */}
+      {/* Header separado del contenedor animado */}
+      <Header />
+
+      {/* Contenido principal animado */}
       <motion.div
-        id="root"
         initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{
@@ -28,9 +28,8 @@ const App: React.FC<AppProps> = () => {
           damping: 10,
           duration: 0.8,
         }}
-        className="pt-28 md:pt-24 relative z-20" 
+        className="pt-28 md:pt-24 relative z-20"
       >
-        <Header />
         <Hero />
         <About />
         <Projects />
