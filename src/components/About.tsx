@@ -6,14 +6,20 @@ import {
   FaDatabase,
   FaCode,
   FaMicrosoft,
+  FaReact,
+  FaBootstrap,
 } from "react-icons/fa";
-import { SiSharp, SiMysql } from "react-icons/si";
+import { SiSharp, SiMysql, SiTypescript, SiTailwindcss } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const skills = [
   { label: "C#", icon: <SiSharp className="text-purple-400" />, level: 80 },
   { label: ".NET Framework", icon: <FaMicrosoft className="text-blue-300" />, level: 70 },
   { label: "JavaScript", icon: <FaJs className="text-yellow-400" />, level: 50 },
+  { label: "TypeScript", icon: <SiTypescript className="text-blue-400" />, level: 65 },
+  { label: "React", icon: <FaReact className="text-cyan-400" />, level: 70 },
+  { label: "TailwindCSS", icon: <SiTailwindcss className="text-sky-400" />, level: 75 },
+  { label: "Bootstrap", icon: <FaBootstrap className="text-purple-500" />, level: 60 },
   { label: "CSS", icon: <FaCss3Alt className="text-blue-500" />, level: 55 },
   { label: "HTML5", icon: <FaHtml5 className="text-orange-400" />, level: 60 },
   { label: "jQuery", icon: <FaCode className="text-pink-400" />, level: 30 },
