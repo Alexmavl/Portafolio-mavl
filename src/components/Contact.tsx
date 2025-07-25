@@ -119,7 +119,7 @@ const Contact: FC = () => {
               </div>
               <div className="text-center sm:text-left">
                 <p className="text-xs text-white/60">Email</p>
-                <p className="text-sm font-medium">Disponible por LinkedIn</p>
+                <p className="text-sm font-medium">marvinv708@gmail.com</p>
               </div>
             </motion.div>
 
