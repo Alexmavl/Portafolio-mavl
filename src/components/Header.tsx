@@ -13,7 +13,7 @@ const Header: FC = () => {
   ];
 
   const handleDownloadCV = () => {
-    window.open("/CVMarvinVasquez.pdf", "_blank", "noopener,noreferrer");
+    window.open("/CVMarvinVasquezDev.pdf", "_blank", "noopener,noreferrer");
   };
 
   // Estados
