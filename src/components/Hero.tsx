@@ -1,5 +1,6 @@
 import type { FC } from "react";
-import { FaLinkedin, FaFacebook, FaGithub, FaMapMarkerAlt, FaEnvelope, FaCode } from "react-icons/fa";
+import { FaLinkedin, FaFacebook, FaGithub, FaMapMarkerAlt, FaEnvelope, FaCode, FaDatabase, FaNodeJs, FaReact } from "react-icons/fa";
+import { SiSharp, SiDotnet, SiJavascript, SiTypescript, SiTailwindcss, SiMysql } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Variantes de animación optimizadas
@@ -87,14 +88,13 @@ const Hero: FC = () => {
                     👋 ¡Hola! Soy
                   </motion.span>
                   
-                  <motion.h1
-  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
-  variants={itemVariants}
->
-  Marvin Alexander 
-  <span className="block text-white">Vásquez López</span>
-</motion.h1>
-
+                  <motion.h5
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
+                    variants={itemVariants}
+                  >
+                    Marvin 
+                    Vásquez López
+                  </motion.h5>
                 </motion.div>
 
                 {/* ROL ACTUAL */}
@@ -110,12 +110,136 @@ const Hero: FC = () => {
 
                 {/* DESCRIPCIÓN */}
                 <motion.p 
-                  className="text-white/80 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8"
+                  className="text-white/80 text-sm sm:text-base leading-relaxed mb-4"
                   variants={itemVariants}
                 >
-                  Estudiante de Ingeniería en Sistemas con experiencia en desarrollo web y gestión empresarial. 
-                  Especializado en <span className="text-cyan-300 font-semibold">C#, .NET y JavaScript</span>.
+                  Estudiante de Ingeniería en Sistemas con experiencia en desarrollo web y gestión empresarial.
                 </motion.p>
+
+                {/* INFORMACIÓN ADICIONAL */}
+                <motion.div
+                  className="mb-4 space-y-2 text-sm text-white/70"
+                  variants={itemVariants}
+                >
+                  <div className="flex items-start gap-2">
+                    <span className="text-cyan-400">🎓</span>
+                    <p><strong className="text-white">Estudiante</strong> apasionado por la tecnología y <strong className="text-white">Desarrollador Web</strong> activo</p>
+                  </div>
+                 
+                  <div className="flex items-start gap-2">
+                    <span className="text-yellow-400">💡</span>
+                    <p><strong className="text-white">Filosofía:</strong> Siempre aprendiendo algo nuevo</p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-400">🔧</span>
+                    <p><strong className="text-white">Actualmente:</strong> Especializándome en <strong className="text-cyan-300">React</strong> y mejorando mis habilidades</p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-red-400">⚡</span>
+                    <p><strong className="text-white">Dato curioso:</strong> Me encanta explorar nuevas tecnologías y resolver problemas complejos</p>
+                  </div>
+                </motion.div>
+
+                {/* TECNOLOGÍAS PRINCIPALES - MINI TARJETAS */}
+                <motion.div
+                  className="mb-6 sm:mb-8"
+                  variants={itemVariants}
+                >
+                  <p className="text-cyan-300 font-semibold text-sm mb-3 text-center lg:text-left">
+                    🚀 Stack Tecnológico
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
+                    {/* C# */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <SiSharp className="text-purple-400 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">C#</span>
+                    </motion.div>
+
+                    {/* .NET */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-300/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <SiDotnet className="text-blue-300 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">.NET</span>
+                    </motion.div>
+
+                    {/* JavaScript */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-yellow-400/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <SiJavascript className="text-yellow-400 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">JavaScript</span>
+                    </motion.div>
+
+                    {/* TypeScript */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-400/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <SiTypescript className="text-blue-400 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">TypeScript</span>
+                    </motion.div>
+
+                    {/* React */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <FaReact className="text-cyan-400 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">React</span>
+                    </motion.div>
+
+                    {/* TailwindCSS */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-sky-400/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <SiTailwindcss className="text-sky-400 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">Tailwind</span>
+                    </motion.div>
+
+                    {/* Node.js */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-500/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <FaNodeJs className="text-green-500 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">Node.js</span>
+                    </motion.div>
+
+                    {/* SQL Server */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-red-400/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <FaDatabase className="text-red-400 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">SQL Server</span>
+                    </motion.div>
+
+                    {/* MySQL */}
+                    <motion.div
+                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-teal-400/50 rounded-lg transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <SiMysql className="text-teal-400 text-xl group-hover:scale-110 transition-transform" />
+                      <span className="text-white text-sm font-medium">MySQL</span>
+                    </motion.div>
+                  </div>
+                </motion.div>
 
                 {/* INFORMACIÓN DE CONTACTO */}
                 <motion.div 
