@@ -149,8 +149,11 @@ const About: FC = () => {
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                🎓 Cuarto año de Ingeniería en Sistemas Universidad Mariano Gálvez.<br />
-                📚 Perito Contador en Computación Colegio Miguel Ángel Asturias (2010-2012).
+                 <strong className="text-white block sm:inline">🎓 Cuarto año de Ingeniería en Sistemas </strong>Universidad Mariano Gálvez.<br />
+                <span className="block sm:inline sm:ml-1">
+                        <strong className="text-white block sm:inline">📚 Perito Contador en Computación</strong>Colegio Miguel Ángel Asturias (2010-2012).
+                  </span>
+              
               </motion.p>
 
               <motion.h4
