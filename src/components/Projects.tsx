@@ -1,6 +1,33 @@
-import type { FC } from "react";
+import type { FC, ReactElement } from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import {
+  FaReact,
+  FaBootstrap,
+  FaDatabase,
+  FaMicrosoft,
+} from "react-icons/fa";
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiSharp,
+  SiDotnet,
+} from "react-icons/si";
+
+// Mapeo de tecnologías a iconos
+const techIcons: Record<string, ReactElement> = {
+  "React": <FaReact className="text-cyan-400" />,
+  "TypeScript": <SiTypescript className="text-blue-400" />,
+  "Tailwindcss": <SiTailwindcss className="text-sky-400" />,
+  "C#": <SiSharp className="text-purple-400" />,
+  ".NET MVC": <SiDotnet className="text-blue-300" />,
+  ".NET Core 9": <SiDotnet className="text-blue-300" />,
+  "SQL Server": <FaDatabase className="text-red-400" />,
+  "Encriptación": <FaMicrosoft className="text-gray-400" />,
+  "UI/UX": <FaMicrosoft className="text-pink-400" />,
+  "Kanban": <FaMicrosoft className="text-green-400" />,
+  "Bootstrap": <FaBootstrap className="text-purple-500" />,
+};
 
 // Iconos SVG personalizados
 const CodeIcon = () => (
@@ -61,21 +88,8 @@ const Projects: FC = () => {
       imagen: "/proyectos/PortaTareas.png",
       color: "from-purple-500 to-pink-500",
       github: "https://github.com/Alexmavl/Portafolio-Tareas",
-      deploy: "https://portafolio-tareas.vercel.app/" // Cambia esta URL por la real
+      deploy: "https://portafolio-tareas-alexmavl.vercel.app" // Cambia esta URL por la real
     },
-
-    {
-      id: "Certificado",
-      titulo: "Certificacion",
-      subtitulo: "Librerias - Certificado",
-      descripcion: `Front End Development Libraries V8.`,
-      tecnologias: ["React", "Boostrap", "Tailwindcss"],
-      icono: <CodeIcon />,
-      imagen: "/proyectos/certificado.png",
-      color: "from-purple-500 to-pink-500",
-      deploy: "https://www.freecodecamp.org/certification/fcc1525a113-3029-4454-8a49-2a565f398337/front-end-development-libraries" // Cambia esta URL por la real
-    },
-
     {
       id: "poke-api",
       titulo: "API Pokemón",
@@ -164,8 +178,8 @@ const Projects: FC = () => {
           </motion.h2>
 
           {/* Carrusel Container */}
-          <div className="relative h-[580px] md:h-[520px] flex items-center justify-center perspective-1000">
-            {/* Proyectos Slider - STACK EFFECT */}
+          <div className="relative h-[650px] sm:h-[600px] md:h-[520px] flex items-center justify-center perspective-1000 overflow-hidden">
+            {/* Proyectos Slider - STACK EFFECT (Desktop) / SIMPLE CAROUSEL (Mobile) */}
             <div className="relative w-full max-w-4xl h-full">
               {proyectos.map((proyecto) => {
                 const index = proyectos.findIndex(p => p.id === proyecto.id);
@@ -176,14 +190,19 @@ const Projects: FC = () => {
                 return (
                   <motion.div
                     key={proyecto.id}
-                    className="absolute inset-0 w-full"
+                    className="absolute inset-0 w-full px-2 md:px-0"
                     initial={false}
                     animate={{
-                      x: `${offset * 80}px`,
-                      scale: isActive ? 1 : Math.max(0.75, 1 - absOffset * 0.1),
-                      opacity: absOffset > 1 ? 0 : 1,
-                      zIndex: proyectos.length - absOffset,
-                      rotateY: offset * 8,
+                      // Mobile: simple fade + slide, Desktop: stack effect
+                      x: window.innerWidth < 768 
+                        ? `${offset * 100}%` 
+                        : `${offset * 80}px`,
+                      scale: window.innerWidth < 768
+                        ? (isActive ? 1 : 0.9)
+                        : (isActive ? 1 : Math.max(0.75, 1 - absOffset * 0.1)),
+                      opacity: absOffset > 0 ? 0 : 1,
+                      zIndex: isActive ? 10 : 1,
+                      rotateY: window.innerWidth < 768 ? 0 : offset * 8,
                     }}
                     transition={{
                       duration: 0.5,
@@ -202,7 +221,7 @@ const Projects: FC = () => {
                       }}
                     >
                       {/* Imagen del proyecto */}
-                      <div className="relative overflow-hidden w-full bg-slate-900/50 flex items-center justify-center" style={{ height: '280px' }}>
+                      <div className="relative overflow-hidden w-full bg-slate-900/50 flex items-center justify-center h-48 sm:h-64 md:h-72">
                         <img
                           key={`${proyecto.id}-img`}
                           src={proyecto.imagen}
@@ -246,8 +265,13 @@ const Projects: FC = () => {
                             {proyecto.tecnologias.map((tech, techIndex) => (
                               <span
                                 key={`${proyecto.id}-tech-${techIndex}`}
-                                className="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-white text-xs rounded-full border border-white/20 transition-colors duration-300"
+                                className="flex items-center gap-1.5 px-2.5 py-1 bg-white/10 hover:bg-white/20 text-white text-xs rounded-full border border-white/20 transition-colors duration-300"
                               >
+                                {techIcons[tech] && (
+                                  <span className="text-sm">
+                                    {techIcons[tech]}
+                                  </span>
+                                )}
                                 {tech}
                               </span>
                             ))}
@@ -255,27 +279,29 @@ const Projects: FC = () => {
                         </div>
 
                         {/* Botones de acción */}
-                        <div className="flex flex-wrap gap-3 mt-auto pt-3">
-                          <a
-                            href={proyecto.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 font-medium group/btn text-sm"
-                            title="Ver código en GitHub"
-                          >
-                            <GitHubIcon />
-                            <span>Ver Código</span>
-                            <svg className="w-3 h-3 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </a>
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-auto pt-3">
+                          {proyecto.github && (
+                            <a
+                              href={proyecto.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 font-medium group/btn text-sm w-full sm:w-auto"
+                              title="Ver código en GitHub"
+                            >
+                              <GitHubIcon />
+                              <span>Ver Código</span>
+                              <svg className="w-3 h-3 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </a>
+                          )}
                           
                           {proyecto.deploy && (
                             <a
                               href={proyecto.deploy}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 font-medium group/btn text-sm"
+                              className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 font-medium group/btn text-sm w-full sm:w-auto"
                               title="Ver proyecto en vivo"
                             >
                               <ExternalLinkIcon />
