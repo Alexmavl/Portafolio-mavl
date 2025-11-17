@@ -29,6 +29,12 @@ const GitHubIcon = () => (
   </svg>
 );
 
+const ExternalLinkIcon = () => (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+  </svg>
+);
+
 const ChevronLeftIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -45,7 +51,33 @@ const Projects: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const proyectos = [
-     {
+    {
+      id: "porta-tareas",
+      titulo: "Portafolio Tareas",
+      subtitulo: "TypeScript - Tareas",
+      descripcion: `Recopilación de tareas de la Clase Desarrollo Web.`,
+      tecnologias: ["React", "TypeScript", "Tailwindcss"],
+      icono: <CodeIcon />,
+      imagen: "/proyectos/PortaTareas.png",
+      color: "from-purple-500 to-pink-500",
+      github: "https://github.com/Alexmavl/Portafolio-Tareas",
+      deploy: "https://portafolio-tareas.vercel.app/" // Cambia esta URL por la real
+    },
+
+    {
+      id: "Certificado",
+      titulo: "Certificacion",
+      subtitulo: "Librerias - Certificado",
+      descripcion: `Front End Development Libraries V8.`,
+      tecnologias: ["React", "Boostrap", "Tailwindcss"],
+      icono: <CodeIcon />,
+      imagen: "/proyectos/certificado.png",
+      color: "from-purple-500 to-pink-500",
+      deploy: "https://www.freecodecamp.org/certification/fcc1525a113-3029-4454-8a49-2a565f398337/front-end-development-libraries" // Cambia esta URL por la real
+    },
+
+    {
+      id: "poke-api",
       titulo: "API Pokemón",
       subtitulo: "C# - Consumo de API",
       descripcion: `Aplicación que consume la API de Pokemón para mostrar información detallada de diferentes pokemones con interfaz moderna y responsiva.`,
@@ -55,8 +87,8 @@ const Projects: FC = () => {
       color: "from-purple-500 to-pink-500",
       github: "https://github.com/Alexmavl/poke-api"
     },
-
     {
+      id: "metodos-numericos",
       titulo: "Métodos Numéricos",
       subtitulo: "C# - Equipo de desarrollo",
       descripcion: `Resuelve métodos como Newton-Raphson, Secante, Müller y Gauss Jordan. Inicio de sesión con contraseñas encriptadas y menús interactivos.`,
@@ -67,6 +99,7 @@ const Projects: FC = () => {
       github: "https://github.com/Alexmavl/Proyecto-de-M-todos-Numericos-"
     },
     {
+      id: "sistema-juridico",
       titulo: "Sistema Jurídico",
       subtitulo: "MVC - .NET Framework",
       descripcion: `Aplicación MVC para gestionar clientes y casos legales. CRUD completo con base de datos en SQL Server y panel administrativo.`,
@@ -77,6 +110,7 @@ const Projects: FC = () => {
       github: "https://github.com/Alexmavl/SistemaGabinete"
     },
     {
+      id: "gestor-tareas",
       titulo: "Gestor de Tareas",
       subtitulo: ".NET Core 9 - Kanban",
       descripcion: `Tablero Kanban para organizar tareas, arrastrarlas entre estados y asignarlas a diferentes usuarios. Gestión completa de usuarios y proyectos.`,
@@ -100,19 +134,20 @@ const Projects: FC = () => {
     setCurrentIndex(index);
   };
 
-  // Auto-slide cada 5 segundos
-  useState(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearInterval(interval);
-  });
+  // Auto-slide desactivado - Solo navegación manual
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % proyectos.length);
+  //   }, 5000);
+  //   return () => clearInterval(interval);
+  // }, [proyectos.length]);
 
   return (
     <section id="proyectos" className="py-12 sm:py-16 md:py-20 bg-transparent">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           className="bg-white/10 backdrop-blur-md rounded-3xl ring-1 ring-cyan-300/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] p-6 sm:p-8 md:p-10"
+          style={{ perspective: '2000px' }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
@@ -129,128 +164,148 @@ const Projects: FC = () => {
           </motion.h2>
 
           {/* Carrusel Container */}
-          <div className="relative overflow-hidden rounded-2xl">
-            {/* Proyectos Slider */}
-            <motion.div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {proyectos.map((proyecto, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
+          <div className="relative h-[580px] md:h-[520px] flex items-center justify-center perspective-1000">
+            {/* Proyectos Slider - STACK EFFECT */}
+            <div className="relative w-full max-w-4xl h-full">
+              {proyectos.map((proyecto) => {
+                const index = proyectos.findIndex(p => p.id === proyecto.id);
+                const offset = index - currentIndex;
+                const isActive = index === currentIndex;
+                const absOffset = Math.abs(offset);
+
+                return (
                   <motion.div
-                    className="group relative rounded-2xl overflow-hidden shadow-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 mx-auto max-w-4xl"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ 
-                      opacity: index === currentIndex ? 1 : 0.7,
-                      scale: index === currentIndex ? 1 : 0.95
+                    key={proyecto.id}
+                    className="absolute inset-0 w-full"
+                    initial={false}
+                    animate={{
+                      x: `${offset * 80}px`,
+                      scale: isActive ? 1 : Math.max(0.75, 1 - absOffset * 0.1),
+                      opacity: absOffset > 1 ? 0 : 1,
+                      zIndex: proyectos.length - absOffset,
+                      rotateY: offset * 8,
                     }}
-                    transition={{ duration: 0.5 }}
-                    whileHover={{ scale: index === currentIndex ? 1.02 : 0.95 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.32, 0.72, 0, 1],
+                    }}
+                    style={{
+                      pointerEvents: isActive ? 'auto' : 'none',
+                      transformStyle: 'preserve-3d',
+                    }}
                   >
-                    <div className="grid md:grid-cols-2 gap-0">
+                    <div
+                      className="group relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-800/95 to-slate-900/95 border border-white/20 backdrop-blur-md hover:shadow-cyan-500/50 transition-all duration-500 mx-auto h-full flex flex-col max-w-3xl"
+                      style={{
+                        filter: !isActive ? 'brightness(0.5) blur(2px)' : 'brightness(1)',
+                        transition: 'filter 0.5s ease',
+                      }}
+                    >
                       {/* Imagen del proyecto */}
-                      <div className="relative overflow-hidden h-64 md:h-80">
-                        <motion.img
+                      <div className="relative overflow-hidden w-full bg-slate-900/50 flex items-center justify-center" style={{ height: '280px' }}>
+                        <img
+                          key={`${proyecto.id}-img`}
                           src={proyecto.imagen}
                           alt={proyecto.titulo}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
                         />
 
-                        <div className={`absolute inset-0 bg-gradient-to-br ${proyecto.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
+                        <div className={`absolute inset-0 bg-gradient-to-br ${proyecto.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
 
                         {/* Badge de tecnología */}
-                        <div className="absolute bottom-4 left-4">
-                          <motion.div
-                            className="flex items-center gap-2 bg-black/70 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-white"
-                            whileHover={{ scale: 1.05 }}
-                          >
+                        <div className="absolute top-4 left-4">
+                          <div className="flex items-center gap-2 bg-black/70 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-white">
                             <span className="text-cyan-400">{proyecto.icono}</span>
                             {proyecto.tecnologias[0]}
-                          </motion.div>
+                          </div>
                         </div>
                       </div>
 
                       {/* Contenido del proyecto */}
-                      <div className="p-6 md:p-8 flex flex-col justify-center">
-                        <div className="mb-4">
-                          <div className="flex items-start justify-between mb-2">
-                            <motion.h3
-                              className="text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-300"
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.4, delay: 0.2 }}
-                            >
+                      <div className="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                          <div className="mb-3">
+                            <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-300 mb-1">
                               {proyecto.titulo}
-                            </motion.h3>
-                            
-                            {/* Botón GitHub en el contenido */}
-                            <a
-                              href={proyecto.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center justify-center w-10 h-10 bg-gray-800 hover:bg-gray-700 text-white rounded-full shadow-lg transition-all duration-200 ml-4 flex-shrink-0"
-                              title="Ver en GitHub"
-                            >
-                              <GitHubIcon />
-                            </a>
+                            </h3>
+                            <p className="text-cyan-400 text-xs md:text-sm font-medium">
+                              {proyecto.subtitulo}
+                            </p>
                           </div>
-                          <p className="text-cyan-400 text-sm md:text-base font-medium">
-                            {proyecto.subtitulo}
+
+                          <p className="text-white/90 text-xs md:text-sm leading-relaxed mb-3">
+                            {proyecto.descripcion}
                           </p>
+
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {proyecto.tecnologias.map((tech, techIndex) => (
+                              <span
+                                key={`${proyecto.id}-tech-${techIndex}`}
+                                className="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-white text-xs rounded-full border border-white/20 transition-colors duration-300"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
 
-                        <motion.p
-                          className="text-white/90 text-sm md:text-base leading-relaxed mb-6"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.5, delay: 0.3 }}
-                        >
-                          {proyecto.descripcion}
-                        </motion.p>
-
-                        <motion.div
-                          className="flex flex-wrap gap-2"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: 0.4 }}
-                        >
-                          {proyecto.tecnologias.map((tech, techIndex) => (
-                            <motion.span
-                              key={techIndex}
-                              className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white text-sm rounded-full border border-white/20 transition-colors duration-300"
-                              whileHover={{ scale: 1.05 }}
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{
-                                duration: 0.3,
-                                delay: 0.5 + techIndex * 0.1
-                              }}
+                        {/* Botones de acción */}
+                        <div className="flex flex-wrap gap-3 mt-auto pt-3">
+                          <a
+                            href={proyecto.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 font-medium group/btn text-sm"
+                            title="Ver código en GitHub"
+                          >
+                            <GitHubIcon />
+                            <span>Ver Código</span>
+                            <svg className="w-3 h-3 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </a>
+                          
+                          {proyecto.deploy && (
+                            <a
+                              href={proyecto.deploy}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 font-medium group/btn text-sm"
+                              title="Ver proyecto en vivo"
                             >
-                              {tech}
-                            </motion.span>
-                          ))}
-                        </motion.div>
+                              <ExternalLinkIcon />
+                              <span>Ver Demo</span>
+                              <svg className="w-3 h-3 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </a>
+                          )}
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-cyan-400/50 transition-colors duration-500 pointer-events-none" />
+                      <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-cyan-400/50 transition-colors duration-500 pointer-events-none" />
+                    </div>
                   </motion.div>
-                </div>
-              ))}
-            </motion.div>
+                );
+              })}
+          </div>
 
             {/* Controles de navegación */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 z-40"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 z-50"
             >
               <ChevronLeftIcon />
             </button>
 
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 z-40"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 z-50"
             >
               <ChevronRightIcon />
             </button>
