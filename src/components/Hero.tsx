@@ -113,7 +113,7 @@ const Hero: FC = () => {
                   className="text-white/80 text-sm sm:text-base leading-relaxed mb-4"
                   variants={itemVariants}
                 >
-                  Estudiante de Ingeniería en Sistemas con experiencia en desarrollo web y gestión empresarial.
+          
                 </motion.p>
 
                 {/* INFORMACIÓN ADICIONAL */}
@@ -123,7 +123,7 @@ const Hero: FC = () => {
                 >
                   <div className="flex items-start gap-2">
                     <span className="text-cyan-400">🎓</span>
-                    <p><strong className="text-white">Estudiante</strong> apasionado por la tecnología y <strong className="text-white">Desarrollador Web</strong> activo</p>
+                    <p><strong className="text-white">Estudiante</strong> de Ingeniería en Sistemas con experiencia en desarrollo web y gestión empresarial apasionado por la tecnología. </p>
                   </div>
                  
                   <div className="flex items-start gap-2">
