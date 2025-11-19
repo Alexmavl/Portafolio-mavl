@@ -88,7 +88,7 @@ const Projects: FC = () => {
       imagen: "/proyectos/PortaTareas.png",
       color: "from-purple-500 to-pink-500",
       github: "https://github.com/Alexmavl/Portafolio-Tareas",
-      deploy: "https://portafolio-tareas-alexmavl.vercel.app" // Cambia esta URL por la real
+      deploy: "https://portafolio-tareas.vercel.app" // Cambia esta URL por la real
     },
     {
       id: "poke-api",
