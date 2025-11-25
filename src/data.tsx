@@ -30,7 +30,7 @@ export const proyectos: Project[] = [
     icono: <CodeIcon />,
     imagen: "/proyectos/PortaTareas.png",
     color: "from-purple-500 to-pink-500",
-    github: "https://github.com/Alexmavl/Portafolio-Tareas",
+    github: "https://github.com/Alexmavl/Portafolio-Tareas.git",
     deploy: "https://portafolio-tareas.vercel.app",
   },
   {
@@ -42,7 +42,7 @@ export const proyectos: Project[] = [
     icono: <CodeIcon />,
     imagen: "/proyectos/poke-api.png",
     color: "from-purple-500 to-pink-500",
-    github: "https://github.com/Alexmavl/poke-api",
+    github: "https://github.com/Alexmavl/poke-api.git",
   },
   {
     id: "metodos-numericos",
@@ -53,7 +53,7 @@ export const proyectos: Project[] = [
     icono: <CodeIcon />,
     imagen: "/proyectos/metodos-numericos.png",
     color: "from-purple-500 to-pink-500",
-    github: "https://github.com/Alexmavl/Proyecto-de-M-todos-Numericos-",
+    github: "https://github.com/Alexmavl/Proyecto-de-M-todos-Numericos-.git",
   },
   {
     id: "sistema-juridico",
@@ -64,7 +64,7 @@ export const proyectos: Project[] = [
     icono: <DatabaseIcon />,
     imagen: "/proyectos/sistema-juridico.png",
     color: "from-blue-500 to-cyan-500",
-    github: "https://github.com/Alexmavl/SistemaGabinete",
+    github: "https://github.com/Alexmavl/SistemaGabinete.git",
   },
   {
     id: "gestor-tareas",
@@ -75,7 +75,7 @@ export const proyectos: Project[] = [
     icono: <TasksIcon />,
     imagen: "/proyectos/gestor-tareas.png",
     color: "from-green-500 to-teal-500",
-    github: "https://github.com/Alexmavl/APITareas",
+    github: "https://github.com/Alexmavl/APITareas.git",
   },
 ];
 
