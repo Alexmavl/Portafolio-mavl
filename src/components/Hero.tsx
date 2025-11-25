@@ -1,7 +1,7 @@
 import type { FC } from "react";
-import { FaLinkedin, FaFacebook, FaGithub, FaMapMarkerAlt, FaEnvelope, FaCode, FaDatabase, FaNodeJs, FaReact } from "react-icons/fa";
-import { SiSharp, SiDotnet, SiJavascript, SiTypescript, SiTailwindcss, SiMysql } from "react-icons/si";
+import { FaMapMarkerAlt, FaEnvelope, FaCode, FaChevronDown } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { socialLinks, techStack } from "../data";
 
 // Variantes de animación optimizadas
 const containerVariants = {
@@ -17,8 +17,8 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.9, ease: "easeOut" as const }
   },
@@ -26,39 +26,44 @@ const itemVariants = {
 
 const imageVariants = {
   hidden: { opacity: 0, scale: 0.8 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     scale: 1,
     transition: { duration: 0.8, ease: "backOut" as const }
   },
 };
 
-const Hero: FC = () => {
-  const socialLinks = [
-    {
-      icon: <FaLinkedin />,
-      url: "https://www.linkedin.com/in/marvin-vasquez-27557397/",
-      color: "text-blue-400",
-      hoverColor: "#0077B5"
-    },
-    {
-      icon: <FaFacebook />,
-      url: "https://www.facebook.com/alexito.vasquez1/",
-      color: "text-blue-500",
-      hoverColor: "#1877F2"
-    },
-    {
-      icon: <FaGithub />,
-      url: "https://github.com/Alexmavl",
-      color: "text-gray-300",
-      hoverColor: "#333"
+// Variantes específicas para el grid de tecnologías
+const techContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
     }
-  ];
+  }
+};
 
+const techItemVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: 20 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 10
+    }
+  }
+};
+
+const Hero: FC = () => {
   return (
     <section
       id="inicio"
-      className="flex items-center py-12 sm:py-16 md:py-20 lg:min-h-screen bg-transparent" 
+      className="flex items-center py-12 sm:py-16 md:py-20 lg:min-h-screen bg-transparent relative"
     >
       <div className="max-w-7xl mx-auto px-4 w-full">
         <AnimatePresence>
@@ -68,12 +73,12 @@ const Hero: FC = () => {
             whileInView="visible"
             exit="exit"
             variants={containerVariants}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: false, amount: 0.2 }}
           >
-            
+
             {/* LAYOUT PRINCIPAL */}
             <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-10">
-              
+
               {/* CONTENIDO DE TEXTO */}
               <motion.div
                 className="flex-1 text-center lg:text-left max-w-2xl"
@@ -81,24 +86,24 @@ const Hero: FC = () => {
               >
                 {/* SALUDO Y NOMBRE */}
                 <motion.div className="mb-4 sm:mb-6" variants={itemVariants}>
-                  <motion.span 
+                  <motion.span
                     className="inline-block px-4 py-2 bg-cyan-500/20 text-cyan-300 rounded-full text-sm font-medium mb-3 sm:mb-4"
                     whileHover={{ scale: 1.05 }}
                   >
                     👋 ¡Hola! Soy
                   </motion.span>
-                  
+
                   <motion.h5
                     className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
                     variants={itemVariants}
                   >
-                    Marvin 
+                    Marvin
                     Vásquez López
                   </motion.h5>
                 </motion.div>
 
                 {/* ROL ACTUAL */}
-                <motion.div 
+                <motion.div
                   className="flex items-center justify-center lg:justify-start gap-2 mb-4 sm:mb-6"
                   variants={itemVariants}
                 >
@@ -109,11 +114,11 @@ const Hero: FC = () => {
                 </motion.div>
 
                 {/* DESCRIPCIÓN */}
-                <motion.p 
+                <motion.p
                   className="text-white/80 text-sm sm:text-base leading-relaxed mb-4"
                   variants={itemVariants}
                 >
-          
+
                 </motion.p>
 
                 {/* INFORMACIÓN ADICIONAL */}
@@ -125,7 +130,7 @@ const Hero: FC = () => {
                     <span className="text-cyan-400">🎓</span>
                     <p><strong className="text-white">Estudiante</strong> de Ingeniería en Sistemas con experiencia en desarrollo web y gestión empresarial apasionado por la tecnología. </p>
                   </div>
-                 
+
                   <div className="flex items-start gap-2">
                     <span className="text-yellow-400">💡</span>
                     <p><strong className="text-white">Filosofía:</strong> Siempre aprendiendo algo nuevo</p>
@@ -148,105 +153,32 @@ const Hero: FC = () => {
                   <p className="text-cyan-300 font-semibold text-sm mb-3 text-center lg:text-left">
                     🚀 Stack Tecnológico
                   </p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
-                    {/* C# */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <SiSharp className="text-purple-400 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">C#</span>
-                    </motion.div>
-
-                    {/* .NET */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-300/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <SiDotnet className="text-blue-300 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">.NET</span>
-                    </motion.div>
-
-                    {/* JavaScript */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-yellow-400/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <SiJavascript className="text-yellow-400 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">JavaScript</span>
-                    </motion.div>
-
-                    {/* TypeScript */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-400/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <SiTypescript className="text-blue-400 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">TypeScript</span>
-                    </motion.div>
-
-                    {/* React */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <FaReact className="text-cyan-400 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">React</span>
-                    </motion.div>
-
-                    {/* TailwindCSS */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-sky-400/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <SiTailwindcss className="text-sky-400 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">Tailwind</span>
-                    </motion.div>
-
-                    {/* Node.js */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-500/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <FaNodeJs className="text-green-500 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">Node.js</span>
-                    </motion.div>
-
-                    {/* SQL Server */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-red-400/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <FaDatabase className="text-red-400 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">SQL Server</span>
-                    </motion.div>
-
-                    {/* MySQL */}
-                    <motion.div
-                      className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-teal-400/50 rounded-lg transition-all duration-300 group"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <SiMysql className="text-teal-400 text-xl group-hover:scale-110 transition-transform" />
-                      <span className="text-white text-sm font-medium">MySQL</span>
-                    </motion.div>
-                  </div>
+                  <motion.div
+                    className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3"
+                    variants={techContainerVariants}
+                  >
+                    {techStack.map((tech) => (
+                      <motion.div
+                        key={tech.name}
+                        className={`flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 ${tech.borderColor} rounded-lg transition-all duration-300 group`}
+                        variants={techItemVariants}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                      >
+                        <span className={`${tech.color} text-xl group-hover:scale-110 transition-transform`}>
+                          {tech.icon}
+                        </span>
+                        <span className="text-white text-sm font-medium">{tech.name}</span>
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 </motion.div>
 
                 {/* INFORMACIÓN DE CONTACTO */}
-                <motion.div 
+                <motion.div
                   className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8"
                   variants={itemVariants}
                 >
-                  <motion.div 
+                  <motion.div
                     className="flex items-center justify-center lg:justify-start gap-3 text-white/70"
                     whileHover={{ scale: 1.02, color: "#22d3ee" }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -257,7 +189,7 @@ const Hero: FC = () => {
                     <span className="text-sm">marvinv708@gmail.com</span>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     className="flex items-center justify-center lg:justify-start gap-3 text-white/70"
                     whileHover={{ scale: 1.02, color: "#22d3ee" }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -281,7 +213,7 @@ const Hero: FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`${social.color} text-2xl sm:text-3xl transition-colors duration-300`}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.3,
                         rotate: [0, -10, 10, 0],
                         color: social.hoverColor
@@ -320,7 +252,7 @@ const Hero: FC = () => {
                       ease: "easeInOut"
                     }}
                   />
-                  
+
                   {/* Imagen principal */}
                   <motion.img
                     src="/ImagenesPortafolio/FotoPerfil2.jpg"
@@ -331,7 +263,7 @@ const Hero: FC = () => {
                       boxShadow: "0 0 30px rgba(34, 211, 238, 0.5)"
                     }}
                   />
-                  
+
                   {/* Badge de estado */}
                   <motion.div
                     className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4"
@@ -352,13 +284,13 @@ const Hero: FC = () => {
             </div>
 
             {/* CALL TO ACTION */}
-            <motion.div 
+            <motion.div
               className="text-center mt-8 sm:mt-10 lg:mt-12"
               variants={itemVariants}
             >
               <motion.button
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold rounded-full shadow-lg text-sm sm:text-base transition-all duration-300"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   boxShadow: "0 10px 40px rgba(34, 211, 238, 0.3)"
                 }}
@@ -371,6 +303,17 @@ const Hero: FC = () => {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* SCROLL INDICATOR */}
+      <motion.div
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 hidden lg:flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ delay: 2, duration: 2, repeat: Infinity }}
+      >
+        <span className="text-xs">Scroll</span>
+        <FaChevronDown />
+      </motion.div>
     </section>
   );
 };

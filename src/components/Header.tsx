@@ -3,15 +3,9 @@ import type { FC } from "react";
 import { FaDownload, FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-scroll";
+import { navItems } from "../data";
 
 const Header: FC = () => {
-  const navItems = [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Sobre Mí", href: "#sobre-mi" },
-    { label: "Proyectos", href: "#proyectos" },
-    { label: "Contacto", href: "#contacto" },
-  ];
-
   const handleDownloadCV = () => {
     window.open("/CVMarvinVasquezDev.pdf", "_blank", "noopener,noreferrer");
   };
@@ -20,6 +14,7 @@ const Header: FC = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("inicio");
 
   // Control del scroll del header
   useEffect(() => {
@@ -96,43 +91,51 @@ const Header: FC = () => {
       >
         <nav className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            
+
             {/* LOGO */}
             <motion.div
               className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center font-bold text-sm sm:text-base rounded-full 
                          bg-gradient-to-tr from-cyan-400/30 to-indigo-500/20 ring-2 ring-cyan-400 text-white 
-                         shadow-[0_0_25px_rgba(34,211,238,0.3)] hover:shadow-cyan-500/30 transition-shadow duration-300 select-none"
+                         shadow-[0_0_25px_rgba(34,211,238,0.3)] hover:shadow-cyan-500/30 transition-shadow duration-300 select-none cursor-pointer"
               initial={{ y: 0 }}
               animate={{ y: [0, -3, 0] }}
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" as const }}
               whileHover={{ scale: 1.1 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               MV
             </motion.div>
 
-   
-            <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-base font-medium">
+
+            <ul className="hidden md:flex items-center gap-2 lg:gap-4 text-base font-medium bg-white/5 px-2 py-1.5 rounded-full border border-white/10">
               {navItems.map((item) => (
-                <li key={item.href}>
+                <li key={item.href} className="relative">
                   <Link
                     to={item.href.replace("#", "")}
                     smooth={true}
                     duration={500}
                     spy={true}
                     offset={-80}
-                    activeClass="text-cyan-400 font-semibold"
-                    className="cursor-pointer hover:text-cyan-300 transition-all duration-200 relative group"
+                    onSetActive={() => setActiveSection(item.href.replace("#", ""))}
+                    className={`relative z-10 px-4 py-2 rounded-full cursor-pointer transition-colors duration-300 ${activeSection === item.href.replace("#", "") ? "text-white" : "text-white/70 hover:text-white"
+                      }`}
                   >
                     {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
                   </Link>
+                  {activeSection === item.href.replace("#", "") && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-cyan-500/20 rounded-full border border-cyan-500/30"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
                 </li>
               ))}
             </ul>
 
             <div className="flex items-center gap-3">
-              
-       
+
+
               <motion.button
                 onClick={handleDownloadCV}
                 aria-label="Descargar currículum en PDF"
@@ -162,7 +165,7 @@ const Header: FC = () => {
                 <FaDownload className="text-sm" />
               </motion.button>
 
-         
+
               <motion.button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Abrir menú"
@@ -194,7 +197,7 @@ const Header: FC = () => {
               transition={{ duration: 0.2 }}
               onClick={() => setIsMobileMenuOpen(false)}
             />
-            
+
             {/* Menú */}
             <motion.div
               className="fixed top-16 left-4 right-4 bg-black/90 backdrop-blur-xl rounded-2xl border border-cyan-500/30 shadow-[0_0_40px_5px_rgba(99,102,241,0.2)] z-50 md:hidden overflow-hidden"
@@ -227,7 +230,7 @@ const Header: FC = () => {
                 </ul>
 
                 {/* BOTÓN CV EN MENÚ MÓVIL */}
-                <motion.div 
+                <motion.div
                   className="mt-6 pt-6 border-t border-white/10"
                   variants={menuItemVariants}
                 >
