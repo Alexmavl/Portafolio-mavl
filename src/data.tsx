@@ -139,7 +139,7 @@ export const certificaciones: Certification[] = [
     institucion: "Institución Educativa",
     descripcion: "Certificado que acredita la finalización exitosa del programa de estudios en desarrollo de software.",
     imagen: "/proyectos/certificado.png",
-    fecha: "2024",
+    fecha: "2025",
     color: "from-blue-500 to-purple-500"
   },
   {
@@ -148,7 +148,7 @@ export const certificaciones: Certification[] = [
     institucion: "INTECAP",
     descripcion: "Certificación en SQL y gestión de bases de datos relacionales otorgada por el Instituto Técnico de Capacitación y Productividad.",
     imagen: "/proyectos/IntecapSql.png",
-    fecha: "2024",
+    fecha: "2025",
     color: "from-green-500 to-blue-500"
   }
 ];
