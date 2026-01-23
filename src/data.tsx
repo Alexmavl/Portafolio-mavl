@@ -20,6 +20,16 @@ export interface Project {
   deploy?: string;
 }
 
+export interface Certification {
+  id: string;
+  titulo: string;
+  institucion: string;
+  descripcion: string;
+  imagen: string;
+  fecha: string;
+  color: string;
+}
+
 export const proyectos: Project[] = [
   {
     id: "porta-tareas",
@@ -83,6 +93,7 @@ export const navItems = [
   { label: "Inicio", href: "#inicio" },
   { label: "Sobre Mí", href: "#sobre-mi" },
   { label: "Proyectos", href: "#proyectos" },
+  { label: "Certificaciones", href: "#certificaciones" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -118,6 +129,27 @@ export const socialLinks = [
     color: "#25D366",
     hoverColor: "#128C7E",
     bgGradient: "from-green-500 to-green-600"
+  }
+];
+
+export const certificaciones: Certification[] = [
+  {
+    id: "certificado-general",
+    titulo: "Certificado de Finalización",
+    institucion: "Institución Educativa",
+    descripcion: "Certificado que acredita la finalización exitosa del programa de estudios en desarrollo de software.",
+    imagen: "/proyectos/certificado.png",
+    fecha: "2024",
+    color: "from-blue-500 to-purple-500"
+  },
+  {
+    id: "intecap-sql",
+    titulo: "Certificación SQL",
+    institucion: "INTECAP",
+    descripcion: "Certificación en SQL y gestión de bases de datos relacionales otorgada por el Instituto Técnico de Capacitación y Productividad.",
+    imagen: "/proyectos/IntecapSql.png",
+    fecha: "2024",
+    color: "from-green-500 to-blue-500"
   }
 ];
 
