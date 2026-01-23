@@ -136,7 +136,7 @@ export const certificaciones: Certification[] = [
   {
     id: "certificado-general",
     titulo: "Certificado de Finalización",
-    institucion: "Institución Educativa",
+    institucion: "freeCodeCamp",
     descripcion: "Certificado que acredita la finalización exitosa del programa de estudios en desarrollo de software.",
     imagen: "/proyectos/certificado.png",
     fecha: "2025",
