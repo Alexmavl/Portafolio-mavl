@@ -58,7 +58,7 @@ const experience = [
 
 const education = [
   {
-    degree: "Ingeniería en Sistemas (4to Año)",
+    degree: "Ingeniería en Sistemas (5to Año)",
     institution: "Universidad Mariano Gálvez",
     period: "En curso",
   },
