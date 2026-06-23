@@ -7,7 +7,7 @@ import { navItems } from "../data";
 
 const Header: FC = () => {
   const handleDownloadCV = () => {
-    window.open("/CVMarvinVasquezDev.pdf", "_blank", "noopener,noreferrer");
+    window.open("/Marvin_Vásquez_Actualizado_CV.pdf", "_blank", "noopener,noreferrer");
   };
 
   // Estados
