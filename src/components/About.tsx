@@ -31,7 +31,7 @@ const skills = [
 
 const experience = [
   {
-    role: "Desarrollador",
+    role: "Analista Programador",
     company: "INGUAT",
     period: "Actualidad",
     description: "Desarrollo en C#, .NET, JavaScript, CSS y SQL Server.",
