@@ -109,7 +109,7 @@ const Hero: FC = () => {
                 >
                   <FaCode className="text-cyan-400" />
                   <span className="text-lg sm:text-xl font-semibold text-cyan-300">
-                    Desarrollador Junior
+                    Analista Programador
                   </span>
                 </motion.div>
 
